@@ -26,6 +26,15 @@
 */
 
 
+/*
+** Casting macro with list of allowed Tensor derived variations
+*/
+#define TENSOR(T)                       \
+    _Generic(                           \
+        (T)                             \
+        , Tensor*: T                    \
+        , Tensor(float)*: (Tensor*) T)
+
 
 
 

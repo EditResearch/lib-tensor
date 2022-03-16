@@ -50,6 +50,13 @@ size_t
 tensor_elements(Tensor * tensor);
 
 
+/*
+**
+*/
+size_t
+tensor_byte_size(Tensor * tensor);
+
+
 /**
 **
 */
@@ -78,10 +85,29 @@ tensor_elements(Tensor * tensor);
 
 
 /**
-**
+** Functon for saving content of the tensor structure into file. 
+** Thanks to the Tensor data type is made up of consists area of memory, 
+** the  writing and reading process from file is more easier then with 
+** complex data structures.
+*/
+size_t
+tensor_save(
+    Tensor * tensor
+    , char * path);
+
+
+/**
+** Function for reading Tensor data structure from file
+*/
+Tensor *
+tensor_load(char * path);
+
+
+/**
+** 
 */
 void
-tensor_finalize(Tensor * tensor);
+tensor_delete(Tensor * tensor);
 
 
 

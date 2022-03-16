@@ -1,6 +1,7 @@
 #include "include/tensor_struct.h"
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 /* TODO: shape validation */
 
@@ -54,8 +55,57 @@ tensor_elements(Tensor * tensor)
 }
 
 
+size_t
+tensor_w(
+    Tensor * tensor
+    , char * path)
+{
+    if(tensor != NULL)
+    {
+        FILE * f = fopen(path, "wb");
+    
+        if(f != NULL)
+        {
+            //TODO: count byte size of the tensor
+            size_t out_size = fwrite(tensor, 1, 0, f);
+
+            fclose(f);
+
+            return out_size;
+        }
+    }
+
+    return -1;
+}
+
+
+Tensor *
+tensor_load(char * path)
+{
+    FILE * f = fopen(path, "rb");
+
+    if(f != NULL)
+    {
+        fseek(f, 0, SEEK_END);
+        size_t fsize = ftell(f);
+        fseek(f, 0, SEEK_SET);
+
+        Tensor * tensor = malloc(fsize);
+        
+        if(tensor != NULL)
+           fread(tensor, fsize, 1, f);
+        
+        fclose(f);
+        
+        return tensor;
+    }
+
+    return NULL;    
+}
+
+
 void
-tensor_finalize(Tensor * tensor)
+tensor_delete(Tensor * tensor)
 {
 	if(tensor != NULL)
 		free(tensor);

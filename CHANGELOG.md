@@ -1,5 +1,7 @@
 
 ** TODO:
+- add function for reading and writing tensor to and from file
+- make unit tests
 - create constructors for every Tensor data type
 - make generic api for the library for working with Tensor containing given data type data array
 - create algebraic operations with tensors
