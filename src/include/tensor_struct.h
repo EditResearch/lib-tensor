@@ -8,7 +8,7 @@
 
 
 #include <stddef.h>
-
+#include <stdint.h>
 
 /**
 ** macro for dynamic type definition of tensor structure with given internal data type
@@ -16,12 +16,20 @@
 #define Tensor(T) Tensor##T
 
 
-
 /**
 ** Abstract Tensor class/structure for dynamic and generic work with tensors instances
 */
-struct Tensor;
-typedef struct Tensor Tensor;
+typedef uint8_t Tensor;
+
+
+/**
+**
+*/
+Tensor *
+tensor_new(
+	size_t ndim
+	, size_t * shape
+	, size_t scalar_size);
 
 
 
@@ -29,30 +37,44 @@ typedef struct Tensor Tensor;
 **
 */
 size_t
-tensor_count_element_size(
+tensor_count_elements(
 	size_t ndim
 	, size_t * shape);
+
 
 
 /**
 **
 */
 size_t 
-tensor_element_size(Tensor * tensor);
+tensor_elements(Tensor * tensor);
 
 
 /**
 **
 */
-size_t
-tensor_ndim(Tensor * tensor);
+#define tensor_ndim(T)													\
+	_Generic(															\
+		(T)																\
+		, Tensor*: *((size_t*) T))
+	
+
+/**
+**
+*/
+#define tensor_shape(T)													\
+	_Generic(															\
+		(T)																\
+		, Tensor*: (size_t*) (T+sizeof(size_t)))
 
 
 /**
 **
 */
-size_t *
-tensor_shape(Tensor * tensor);
+#define tensor_byte_data(T)												\
+	_Generic(															\
+		(T)																\
+		, Tensor*: (void*) (T + (sizeof(size_t) * (tensor_ndim(T)+1))))
 
 
 /**

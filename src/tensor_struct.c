@@ -1,18 +1,36 @@
 #include "include/tensor_struct.h"
 #include <stdlib.h>
+#include <string.h>
+
+/* TODO: shape validation */
 
 
-struct Tensor
+Tensor *
+tensor_new(
+	size_t ndim
+	, size_t * shape
+	, size_t element_size)
 {
-	void * array; 		/** generic pointer to tensor data*/
-		
-	size_t ndim;	 	/** rank of the tensor, metadata for using tensor shape as flexible array */
-	size_t shape[];		/** shape of the tensor, which is used for dynamic working with tensor data */
-};
+	Tensor * tensor = 
+		malloc(
+			element_size 
+			+ (sizeof(size_t) * (ndim+1)));
+
+	if(tensor != NULL)
+	{
+		*((size_t*) tensor) = ndim;
+		memcpy(
+			tensor+sizeof(size_t)
+			, shape
+			, sizeof(size_t)*ndim);
+	}
+
+	return tensor;
+}
 
 
 size_t
-tensor_count_element_size(
+tensor_count_elements(
 	size_t ndim
 	, size_t * shape)
 {
@@ -28,39 +46,19 @@ tensor_count_element_size(
 
 
 size_t 
-tensor_element_size(Tensor * tensor)
+tensor_elements(Tensor * tensor)
 {
-	return tensor_count_element_size(
-				tensor->ndim
-				, tensor->shape);
+	return tensor_count_elements(
+				tensor_ndim(tensor)
+				, tensor_shape(tensor));
 }
-
-
-size_t
-tensor_ndim(Tensor * tensor)
-{
-	return tensor->ndim;
-}
-
-
-size_t *
-tensor_shape(Tensor * tensor)
-{
-	return tensor->shape;
-}
-
 
 
 void
 tensor_finalize(Tensor * tensor)
 {
 	if(tensor != NULL)
-	{
-		if(tensor->array != NULL)
-			free(tensor->array);
-
 		free(tensor);
-	}
 }
 
 
