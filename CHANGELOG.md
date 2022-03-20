@@ -1,5 +1,6 @@
 
 ** TODO:
+- rework Tensor interface as macros of parametrized base function with casting to required tensor type 
 - add function for reading and writing tensor to and from file
 - make unit tests
 - create constructors for every Tensor data type

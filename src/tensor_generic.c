@@ -1,4 +1,4 @@
-#include "include/tensor_struct.h"
+#include "include/tensor_generic.h"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
@@ -6,27 +6,48 @@
 /* TODO: shape validation */
 
 
+/*************************** public interface *********************************/
+
+
+
 Tensor *
 tensor_new(
 	size_t ndim
 	, size_t * shape
-	, size_t element_size)
+    , uint8_t element_size
+	, size_t elements)
 {
 	Tensor * tensor = 
 		malloc(
-			element_size 
+			elements + sizeof(uint8_t)
 			+ (sizeof(size_t) * (ndim+1)));
 
 	if(tensor != NULL)
 	{
-		*((size_t*) tensor) = ndim;
+        *((uint8_t*) tensor) = element_size;
+		*((size_t*) (tensor+1)) = ndim;
 		memcpy(
-			tensor+sizeof(size_t)
+			tensor_shape(tensor)
 			, shape
 			, sizeof(size_t)*ndim);
+        
 	}
 
 	return tensor;
+}
+
+
+Tensor *
+tensor_copy(Tensor * tensor)
+{
+    size_t byte_size = tensor_byte_size(tensor);
+
+    Tensor * copy = malloc(byte_size);
+
+    if(copy != NULL)
+        memcpy(copy, tensor, byte_size);
+
+    return copy;
 }
 
 
@@ -56,7 +77,18 @@ tensor_elements(Tensor * tensor)
 
 
 size_t
-tensor_w(
+tensor_byte_size(Tensor * tensor)
+{
+    return (tensor_elements(tensor) 
+        * tensor_element_size(tensor))
+        + ((tensor_ndim(tensor)+1)
+        * sizeof(size_t)) 
+        + 1;
+}
+
+
+size_t
+tensor_save(
     Tensor * tensor
     , char * path)
 {
@@ -66,8 +98,12 @@ tensor_w(
     
         if(f != NULL)
         {
-            //TODO: count byte size of the tensor
-            size_t out_size = fwrite(tensor, 1, 0, f);
+            size_t out_size = 
+                fwrite(
+                    tensor
+                    , 1
+                    , tensor_byte_size(tensor)
+                    , f);
 
             fclose(f);
 
@@ -110,6 +146,11 @@ tensor_delete(Tensor * tensor)
 	if(tensor != NULL)
 		free(tensor);
 }
+
+
+
+
+
 
 
 

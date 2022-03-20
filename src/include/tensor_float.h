@@ -1,8 +1,16 @@
+/**
+** @file tensor_float.h
+** @author Petr Horáček
+**
+** @bruef Module with Tensor(float) data type declaration
+*/
+
 
 #ifndef _TENSOR_FLOAT_H_
 #define _TENSOR_FLOAT_H_ 
 
-#include "tensor_struct.h"
+
+#include "tensor_generic.h"
 
 
 /**
@@ -20,6 +28,15 @@ tensor_float_new_from_array(
 	size_t ndim
 	, size_t * shape
 	, void * array);
+
+
+/**
+**
+*/
+Tensor(float) *
+tensor_float_new_zeros(
+    size_t ndim
+    , size_t * shape);
 
 
 /*

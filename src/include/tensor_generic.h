@@ -1,3 +1,8 @@
+/**
+** @file tensor_struct.h
+** 
+*/
+
 #ifndef _TENSOR_STRUCT_H_
 #define _TENSOR_STRUCT_H_ 
 
@@ -10,6 +15,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
+
+
 /**
 ** macro for dynamic type definition of tensor structure with given internal data type
 */ 
@@ -17,7 +24,8 @@
 
 
 /**
-** Abstract Tensor class/structure for dynamic and generic work with tensors instances
+** Abstract Tensor class/structure for dynamic and generic 
+** work with tensors instances
 */
 typedef uint8_t Tensor;
 
@@ -29,8 +37,8 @@ Tensor *
 tensor_new(
 	size_t ndim
 	, size_t * shape
-	, size_t scalar_size);
-
+    , uint8_t element_size
+	, size_t elements);
 
 
 /**
@@ -41,6 +49,12 @@ tensor_count_elements(
 	size_t ndim
 	, size_t * shape);
 
+
+/**
+**
+*/
+Tensor *
+tensor_copy(Tensor * tensor);
 
 
 /**
@@ -60,10 +74,19 @@ tensor_byte_size(Tensor * tensor);
 /**
 **
 */
+#define tensor_element_size(T)               \
+    _Generic(                                \
+        (T)                                  \
+        , Tensor*: *((uint8_t*) T))
+
+
+/**
+**
+*/
 #define tensor_ndim(T)													\
 	_Generic(															\
 		(T)																\
-		, Tensor*: *((size_t*) T))
+		, Tensor*: *((size_t*) T+1))
 	
 
 /**
@@ -72,7 +95,7 @@ tensor_byte_size(Tensor * tensor);
 #define tensor_shape(T)													\
 	_Generic(															\
 		(T)																\
-		, Tensor*: (size_t*) (T+sizeof(size_t)))
+		, Tensor*: (size_t*) (T+sizeof(size_t)+1))
 
 
 /**
@@ -81,7 +104,7 @@ tensor_byte_size(Tensor * tensor);
 #define tensor_byte_data(T)												\
 	_Generic(															\
 		(T)																\
-		, Tensor*: (void*) (T + (sizeof(size_t) * (tensor_ndim(T)+1))))
+		, Tensor*: (void*) (T + 1 + (sizeof(size_t) * (tensor_ndim(T)+1))))
 
 
 /**

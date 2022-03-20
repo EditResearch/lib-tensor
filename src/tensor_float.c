@@ -1,5 +1,4 @@
 #include "include/tensor_float.h"
-#include "include/tensor_struct.h"
 
 #include <stdlib.h>
 #include <string.h>
@@ -29,6 +28,7 @@ tensor_float_new_from_array(
 		tensor_new(
 			ndim
 			, shape
+            , sizeof(float)
 			, element_size);
 
 	if(tensor != NULL)
@@ -37,6 +37,36 @@ tensor_float_new_from_array(
 			tensor+sizeof(size_t)*(ndim+1)
 			, array
 			, element_size);
+	}
+
+	return (Tensor(float)*) tensor;
+}
+
+
+Tensor(float) *
+tensor_float_new_zeros(
+    size_t ndim
+    , size_t * shape)
+{
+	size_t element_size = 
+		tensor_count_elements(ndim, shape);
+
+	Tensor * tensor = 
+		tensor_new(
+			ndim
+			, shape
+            , sizeof(float)
+			, sizeof(float) * element_size);
+
+	if(tensor != NULL)
+	{
+		float * array = tensor_byte_data(tensor);
+
+		/* TODO: accelerate it with cpu threads, gpu acceleration is not needed */ 
+		for(size_t i = 0; i < element_size; i++)
+		{
+			array[i] = 0;
+		}
 	}
 
 	return (Tensor(float)*) tensor;
@@ -55,6 +85,7 @@ tensor_float_new_random(
 		tensor_new(
 			ndim
 			, shape
+            , sizeof(float)
 			, sizeof(float) * element_size);
 
 	if(tensor != NULL)
