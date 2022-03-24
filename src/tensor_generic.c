@@ -19,8 +19,8 @@ tensor_new(
 {
 	Tensor * tensor = 
 		malloc(
-			elements + sizeof(uint8_t)
-			+ (sizeof(size_t) * (ndim+1)));
+		   elements + sizeof(uint8_t)
+		   + (sizeof(size_t) * (ndim+1)));
 
 	if(tensor != NULL)
 	{
@@ -30,7 +30,6 @@ tensor_new(
 			tensor_shape(tensor)
 			, shape
 			, sizeof(size_t)*ndim);
-        
 	}
 
 	return tensor;
@@ -50,7 +49,6 @@ tensor_copy(Tensor * tensor)
     return copy;
 }
 
-
 size_t
 tensor_count_elements(
 	size_t ndim
@@ -65,6 +63,8 @@ tensor_count_elements(
 
 	return element_size;
 }
+
+
 
 
 size_t 

@@ -25,8 +25,13 @@
 */
 
 
+#define TENSOR_VERSION_MAJOR 0
+#define TENSOR_VERSION_MINOR 1
+#define TENSOR_VERSION_PATCH 0
 
 
+const char *
+tensor_version(void);
 
 /*
 ** Casting macro with list of allowed Tensor derived variations

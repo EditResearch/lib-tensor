@@ -26,10 +26,10 @@ tensor_float_new_from_array(
 
 	Tensor * tensor = 
 		tensor_new(
-			ndim
-			, shape
-            , sizeof(float)
-			, element_size);
+		    ndim
+		    , shape
+                    , sizeof(float)
+	            , element_size);
 
 	if(tensor != NULL)
 	{

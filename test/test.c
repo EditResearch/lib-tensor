@@ -23,8 +23,7 @@ show_tensor(Tensor(float) *tensor)
 }
 
 
-int 
-main(void)
+void test_01()
 {
 	printf("Allocating tensor...\n");
 	fflush(stdout);
@@ -52,7 +51,15 @@ main(void)
 		printf("Tensor was not allocated!\n");
 		fflush(stdout);
 	}
+}
 
+int 
+main(void)
+{
+	printf("%s\n", tensor_version());
+
+	printf("%s\n", tensor_version());
+	printf("%s\n", tensor_version());
 	return EXIT_SUCCESS;
 }
 
