@@ -54,21 +54,37 @@ tensor_count_elements(
 **
 */
 Tensor *
-tensor_copy(Tensor * tensor);
+tensor_copy(Tensor * t);
+
+
+/**
+**
+*/
+bool
+tensor_equal(
+    Tensor * t1
+    , Tensor * t2);
 
 
 /**
 **
 */
 size_t 
-tensor_elements(Tensor * tensor);
+tensor_elements(Tensor * t);
+
+
+/**
+**
+*/
+bool
+tensor_reshape(Tensor * t);
 
 
 /*
 **
 */
 size_t
-tensor_byte_size(Tensor * tensor);
+tensor_byte_size(Tensor * t);
 
 
 /**
@@ -95,15 +111,15 @@ tensor_byte_size(Tensor * tensor);
 #define tensor_shape(T)													\
 	_Generic(															\
 		(T)																\
-		, Tensor*: (size_t*) (T+sizeof(size_t)+1))
+		, Tensor*: (size_t*) (T+1+sizeof(size_t)))
 
 
 /**
-**
+** TODO: make it cleaner
 */
-#define tensor_byte_data(T)												\
-	_Generic(															\
-		(T)																\
+#define tensor_byte_data(T)						    						\
+	_Generic(								    							\
+		(T)								    								\
 		, Tensor*: (void*) (T + 1 + (sizeof(size_t) * (tensor_ndim(T)+1))))
 
 
@@ -115,7 +131,7 @@ tensor_byte_size(Tensor * tensor);
 */
 size_t
 tensor_save(
-    Tensor * tensor
+    Tensor * t
     , char * path);
 
 
@@ -130,7 +146,7 @@ tensor_load(char * path);
 ** 
 */
 void
-tensor_delete(Tensor * tensor);
+tensor_delete(Tensor * t);
 
 
 

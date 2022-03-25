@@ -1,21 +1,17 @@
+/**
+** @file tensor.h
+** @author Petr Horáček
+** 
+** @brief
+** This file makes access point to the tensor library. In this file are declared
+** all mathematical operation with tensors with generic api
+**
+*/ 
+
+
 #ifndef _TENSOR_H_
 #define _TENSOR_H_
 
-/**
-** Main header file for include lib-tensor library
-** This file containe mainly include of other source files and 
-** generic macros for cleaner library api
-**
-** Tensor is mathematical structure for manipulation with multidimensional 
-** number arrays. This has wide use in machine learning a physics modeling.
-** Every tensor operations is possible divide into sequence of base algebraic 
-** operations. This operations are computationally intensive and therefore 
-** they must be accelerated with parallel threads on cpu or even better on gpu.
-**
-** No every computer has external graphics card for acceleration of computations, so
-** this api is divided into parts one thread only, parallel threads on cpu or parallel
-** thread on gpu throw cuda api. 
-*/ 
 
 
 #include "tensor_float.h"
@@ -26,7 +22,7 @@
 
 
 #define TENSOR_VERSION_MAJOR 0
-#define TENSOR_VERSION_MINOR 3
+#define TENSOR_VERSION_MINOR 4
 #define TENSOR_VERSION_PATCH 0
 
 
@@ -63,7 +59,7 @@ tensor_float_dot(
 #define tensor_dot(T1, T2)						\
 	_Generic(									\
 		(T1)									\
-		, Tensor(float*): tensor_float_dot)		\
+		, Tensor(float)*: tensor_float_dot)		\
 			(T1, T2)
 
 
@@ -91,7 +87,7 @@ tensor_float_add(
 ** Addition operation of tensor of float with float constant
 */
 Tensor(float) *
-tensor_float_add_constant(
+tensor_float_const_add(
 	Tensor(float) * t
 	, float n);
 
@@ -100,11 +96,50 @@ tensor_float_add_constant(
 ** Generic macro for dynamic switching of called addition function
 ** based on used tensor data type
 */
-#define tensor_add_constant(T, n)						\
+#define tensor_const_add(T, n)   						\
 	_Generic(											\
 		(T)												\
 		, Tensor(float)*: tensor_float_add_constant)	\
 			(T, n)
+
+
+/**
+**
+*/
+Tensor(float) * 
+tensor_float_multiply(
+    Tensor(float) * t1
+    , Tensor(float) * t2);
+
+
+/**
+**
+*/
+#define tensor_multiply(T1, T2)                         \
+    _Generic(                                           \
+        (T1)                                            \
+        , Tensor(float)*: tensor_float_multiply)        \
+            (T1, T2)
+
+
+/**
+**
+*/
+Tensor(float) *
+tensor_float_const_multiply(
+    Tensor(float) * t
+    , float n);
+
+
+/**
+**
+*/
+#define tensor_const_multiply(T, n)                     \
+    _Generic(                                           \
+        (T)                                             \
+        , Tensor(float)*: tensor_float_const_multiply)  \
+            (T, n)
+
 
 
 

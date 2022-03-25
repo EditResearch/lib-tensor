@@ -16,8 +16,10 @@ all: release gen_doc
 gen_doc:
 	doxygen Doxyfile
 
+
 tensor.o: tensor_generic.o tensor_float.o src/tensor.c src/include/tensor.h
 	$(CC) $(CFLAGS) -c src/tensor.c -o tensor.o
+
 
 tensor_generic.o: src/tensor_generic.c src/include/tensor_generic.h
 	$(CC) $(CFLAGS) -c src/tensor_generic.c -o tensor_generic.o

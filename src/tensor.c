@@ -22,7 +22,7 @@ tensor_version(void)
 
 
 Tensor(float) *
-tensor_float_add_constant(
+tensor_float_const_add(
 	Tensor(float) * t
 	, float n)
 {
@@ -58,6 +58,30 @@ tensor_float_dot(
 
 
 
+Tensor(float) * 
+tensor_float_multiply(
+    Tensor(float) * t1
+    , Tensor(float) * t2)
+{
+    (void)t1;
+    (void)t2;
+
+    /* TODO: code here */    
+    return NULL;
+}
+
+
+Tensor(float) *
+tensor_float_const_multiply(
+    Tensor(float) * t
+    , float n)
+{
+    (void) t;
+    (void) n;
+
+    /* TODO: code here */
+    return NULL;        
+}
 
 
 

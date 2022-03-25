@@ -2,7 +2,7 @@
 ** @file tensor_float.h
 ** @author Petr Horáček
 **
-** @bruef Module with Tensor(float) data type declaration
+** @brief Module with Tensor(float) data type declaration
 */
 
 
