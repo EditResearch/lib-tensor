@@ -53,13 +53,46 @@ void test_01()
 	}
 }
 
+
+void
+test_02()
+{
+	printf("lib-tensor version %s\n", tensor_version());
+
+	Tensor(float) * tensor = 
+		tensor_float_new_zeros(3, (size_t[]){1,2,2});
+
+	if(tensor != NULL)
+	{
+		size_t ndim = tensor_ndim(TENSOR(tensor));
+		printf("ndim = %lld\n", ndim);
+
+		size_t * shape = tensor_shape(TENSOR(tensor));
+
+		printf("Shape {");
+		for(size_t i = 0; i < ndim; i++)
+		{
+			if(i == 0)
+				printf("%lld", shape[i]);
+			else
+				printf(", %lld", shape[i]);
+		}	
+		printf("}\n");
+
+		show_tensor(tensor);
+
+	}
+	else
+	{
+		printf("Creation tensor error!\n");
+	}
+}
+
+
 int 
 main(void)
 {
-	printf("%s\n", tensor_version());
-
-	printf("%s\n", tensor_version());
-	printf("%s\n", tensor_version());
+	test_02();
 	return EXIT_SUCCESS;
 }
 

@@ -26,23 +26,85 @@
 
 
 #define TENSOR_VERSION_MAJOR 0
-#define TENSOR_VERSION_MINOR 2
+#define TENSOR_VERSION_MINOR 3
 #define TENSOR_VERSION_PATCH 0
 
 
 const char *
 tensor_version(void);
 
+
 /*
 ** Casting macro with list of allowed Tensor derived variations
+** This enable type safety during compilation
 */
-#define TENSOR(T)                       \
-    _Generic(                           \
-        (T)                             \
-        , Tensor*: T                    \
+#define TENSOR(T)                       	\
+    _Generic(                           	\
+        (T)                             	\
+        , Tensor*: T                    	\
         , Tensor(float)*: (Tensor*) T)
 
 
+
+/**
+** Dot operation on tensor of float type
+*/
+Tensor(float) * 
+tensor_float_dot(
+	Tensor(float) * t1
+	, Tensor(float) * t2);
+
+
+
+/**
+** Generic macro for dynamic switching of called dot product function
+** based on used tensor data type
+*/
+#define tensor_dot(T1, T2)						\
+	_Generic(									\
+		(T1)									\
+		, Tensor(float*): tensor_float_dot)		\
+			(T1, T2)
+
+
+/**
+** Addition opration of two float tensors 
+*/
+Tensor(float) *
+tensor_float_add(
+	Tensor(float) * t1
+	, Tensor(float) * t2);
+
+
+/**
+** Generic macro for dynamic switching of called addition function
+** based on used tensor data type
+*/
+#define tensor_add(T1, T2)						\
+	_Generic(									\
+		(T1)									\
+		, Tensor(float)*: tensor_float_add) 	\
+			(T1, T2)
+
+
+/**
+** Addition operation of tensor of float with float constant
+*/
+Tensor(float) *
+tensor_float_add_constant(
+	Tensor(float) * t
+	, float n);
+
+
+/**
+** Generic macro for dynamic switching of called addition function
+** based on used tensor data type
+*/
+#define tensor_add_constant(T, n)						\
+	_Generic(											\
+		(T)												\
+		, Tensor(float)*: tensor_float_add_constant)	\
+			(T, n)
 
 
 

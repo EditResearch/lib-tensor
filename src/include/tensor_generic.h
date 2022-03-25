@@ -14,7 +14,7 @@
 
 #include <stddef.h>
 #include <stdint.h>
-
+#include <stdbool.h>
 
 
 /**
@@ -86,7 +86,7 @@ tensor_byte_size(Tensor * tensor);
 #define tensor_ndim(T)													\
 	_Generic(															\
 		(T)																\
-		, Tensor*: *((size_t*) T+1))
+		, Tensor*: *((size_t*) (T+1)))
 	
 
 /**
