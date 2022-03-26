@@ -39,7 +39,7 @@ tensor_new(
 Tensor *
 tensor_copy(Tensor * t)
 {
-    size_t byte_size = tensor_byte_size(t);
+    size_t byte_size = tensor_byte_length(t);
 
     Tensor * copy = malloc(byte_size);
 
@@ -68,7 +68,7 @@ tensor_equal(
     size_t t1_ndim = tensor_ndim(t1);
 
     if(t1_ndim == tensor_ndim(t2)
-       && tensor_element_size(t1) == tensor_element_size(t2))
+       && tensor_byte_size(t1) == tensor_byte_size(t2))
     {
         if(memcmp(
              tensor_shape(t1)
@@ -76,9 +76,9 @@ tensor_equal(
              , sizeof(size_t) * t1_ndim) == 0)
         {
             return !memcmp(
-                      tensor_byte_data(t1)
-                      , tensor_byte_data(t2)
-                      , tensor_element_size(t1) * tensor_elements(t1));
+                      tensor_data(t1)
+                      , tensor_data(t2)
+                      , tensor_byte_size(t1) * tensor_length(t1));
         }
     }
 
@@ -101,7 +101,7 @@ tensor_count_elements(
 
 
 size_t 
-tensor_elements(Tensor * t)
+tensor_length(Tensor * t)
 {
 	return tensor_count_elements(
 				tensor_ndim(t)
@@ -110,15 +110,15 @@ tensor_elements(Tensor * t)
 
 
 size_t
-tensor_byte_size(Tensor * t)
+tensor_byte_length(Tensor * t)
 {
     /* 
      * TODO: modify to count only byte size of tensor data,
      * dont forget modify code where is this function used
      * and if it is possible make it cleaner
      */
-    return (tensor_elements(t) 
-        * tensor_element_size(t))
+    return (tensor_length(t) 
+        * tensor_byte_size(t))
         + ((tensor_ndim(t)+1)
         * sizeof(size_t)) 
         + 1;
@@ -138,7 +138,7 @@ tensor_save(
                 fwrite(
                     t
                     , 1
-                    , tensor_byte_size(t)
+                    , tensor_byte_length(t)
                     , file);
 
         fclose(file);

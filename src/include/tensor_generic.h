@@ -3,8 +3,8 @@
 ** 
 */
 
-#ifndef _TENSOR_STRUCT_H_
-#define _TENSOR_STRUCT_H_ 
+#ifndef _TENSOR_GENERIC_H_
+#define _TENSOR_GENERIC_H_ 
 
 /**
 ** In this file are defined base tensor structure for creation of 
@@ -70,7 +70,7 @@ tensor_equal(
 **
 */
 size_t 
-tensor_elements(Tensor * t);
+tensor_length(Tensor * t);
 
 
 /**
@@ -80,47 +80,43 @@ bool
 tensor_reshape(Tensor * t);
 
 
-/*
+
+inline uint8_t
+tensor_byte_size(Tensor * t)
+{
+    return *((uint8_t*) t);   
+}
+
+
+inline size_t
+tensor_ndim(Tensor * t)
+{
+    return *((size_t*)(t + sizeof(uint8_t)));
+}
+
+
+inline size_t *
+tensor_shape(Tensor * t)
+{
+    return (size_t*)(t + sizeof(uint8_t) + sizeof(size_t));
+}
+
+
+
+inline void *
+tensor_data(Tensor * t)
+{
+    return (void*) (t + tensor_ndim(t) + sizeof(uint8_t) + sizeof(size_t));
+}
+
+
+
+
+/**
 **
 */
 size_t
-tensor_byte_size(Tensor * t);
-
-
-/**
-**
-*/
-#define tensor_element_size(T)               \
-    _Generic(                                \
-        (T)                                  \
-        , Tensor*: *((uint8_t*) T))
-
-
-/**
-**
-*/
-#define tensor_ndim(T)													\
-	_Generic(															\
-		(T)																\
-		, Tensor*: *((size_t*) (T+1)))
-	
-
-/**
-**
-*/
-#define tensor_shape(T)													\
-	_Generic(															\
-		(T)																\
-		, Tensor*: (size_t*) (T+1+sizeof(size_t)))
-
-
-/**
-** TODO: make it cleaner
-*/
-#define tensor_byte_data(T)						    						\
-	_Generic(								    							\
-		(T)								    								\
-		, Tensor*: (void*) (T + 1 + (sizeof(size_t) * (tensor_ndim(T)+1))))
+tensor_byte_length(Tensor * t);
 
 
 /**

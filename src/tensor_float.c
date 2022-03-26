@@ -28,8 +28,8 @@ tensor_float_new_from_array(
 		tensor_new(
 		    ndim
 		    , shape
-                    , sizeof(float)
-	            , element_size);
+            , sizeof(float)
+	        , element_size);
 
 	if(tensor != NULL)
 	{
@@ -60,7 +60,7 @@ tensor_float_new_zeros(
 
 	if(tensor != NULL)
 	{
-		float * array = tensor_byte_data(tensor);
+		float * array = tensor_data(tensor);
 
 		/* TODO: accelerate it with cpu threads, gpu acceleration is not needed */ 
 		for(size_t i = 0; i < element_size; i++)
@@ -90,7 +90,7 @@ tensor_float_new_random(
 
 	if(tensor != NULL)
 	{
-		float * array = tensor_byte_data(tensor);
+		float * array = tensor_data(tensor);
 
 		/* TODO: accelerate it with cpu threads, gpu acceleration is not needed */ 
 		for(size_t i = 0; i < element_size; i++)
