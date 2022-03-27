@@ -37,15 +37,15 @@ Tensor *
 tensor_new(
 	size_t ndim
 	, size_t * shape
-    , uint8_t element_size
-	, size_t elements);
+    , uint8_t byte_size
+	, size_t data_byte_length);
 
 
 /**
 **
 */
 size_t
-tensor_count_elements(
+tensor_count_length(
 	size_t ndim
 	, size_t * shape);
 
@@ -81,33 +81,21 @@ tensor_reshape(Tensor * t);
 
 
 
-inline uint8_t
-tensor_byte_size(Tensor * t)
-{
-    return *((uint8_t*) t);   
-}
+uint8_t
+tensor_byte_size(Tensor * t);
 
 
-inline size_t
-tensor_ndim(Tensor * t)
-{
-    return *((size_t*)(t + sizeof(uint8_t)));
-}
+size_t
+tensor_ndim(Tensor * t);
 
 
-inline size_t *
-tensor_shape(Tensor * t)
-{
-    return (size_t*)(t + sizeof(uint8_t) + sizeof(size_t));
-}
+size_t *
+tensor_shape(Tensor * t);
 
 
 
-inline void *
-tensor_data(Tensor * t)
-{
-    return (void*) (t + tensor_ndim(t) + sizeof(uint8_t) + sizeof(size_t));
-}
+void *
+tensor_data(Tensor * t);
 
 
 

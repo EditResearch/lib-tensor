@@ -22,7 +22,7 @@ tensor_float_new_from_array(
 	, void * array)
 {
 	size_t element_size = 
-		sizeof(float)*tensor_count_elements(ndim, shape);
+		sizeof(float)*tensor_count_length(ndim, shape);
 
 	Tensor * tensor = 
 		tensor_new(
@@ -49,7 +49,7 @@ tensor_float_new_zeros(
     , size_t * shape)
 {
 	size_t element_size = 
-		tensor_count_elements(ndim, shape);
+		tensor_count_length(ndim, shape);
 
 	Tensor * tensor = 
 		tensor_new(
@@ -79,7 +79,7 @@ tensor_float_new_random(
 	, size_t * shape)
 {
 	size_t element_size = 
-		tensor_count_elements(ndim, shape);
+		tensor_count_length(ndim, shape);
 
 	Tensor * tensor = 
 		tensor_new(
@@ -104,4 +104,15 @@ tensor_float_new_random(
 
 
 
+Tensor(float) *
+tensor_float_new(
+    size_t ndim
+    , size_t * shape)   
+{
+    return (Tensor(float)*) tensor_new(                                                             
+			                    ndim                                                             
+			                    , shape                                                          
+                                , sizeof(float)                                                  
+			                    , sizeof(float) * tensor_count_length(ndim, shape));
+}
 

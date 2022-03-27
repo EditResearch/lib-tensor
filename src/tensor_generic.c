@@ -5,6 +5,19 @@
 
 /* TODO: shape validation */
 
+static bool 
+tensor_shape_valid(
+    size_t ndim
+    , size_t * shape);
+
+
+static bool
+tensor_byte_size_valid(
+    size_t ndim
+    , size_t * shape
+    , uint8_t byze_size
+    , size_t data_byte_size);
+
 
 /*************************** public interface *********************************/
 
@@ -14,25 +27,29 @@ Tensor *
 tensor_new(
 	size_t ndim
 	, size_t * shape
-    , uint8_t element_size
-	, size_t elements)
+    , uint8_t byte_size
+	, size_t data_byte_length)
 {
-	Tensor * t = 
-		malloc(
-		   elements + sizeof(uint8_t)
-		   + (sizeof(size_t) * (ndim+1)));
+    if(tensor_shape_valid(ndim, shape) == true
+        && byte_size > 0
+        && data_byte_length > 0)
+    {
+	    Tensor * t = 
+		    malloc(
+		        data_byte_length + sizeof(uint8_t)
+		        + (sizeof(size_t) * (ndim+1)));
 
-	if(t != NULL)
-	{
-        *((uint8_t*) t) = element_size;
-		*((size_t*) (t+1)) = ndim;
-		memcpy(
-			tensor_shape(t)
-			, shape
-			, sizeof(size_t)*ndim);
-	}
+	    if(t != NULL)
+	    {
+            *((uint8_t*) t) = byte_size;
+		    *((size_t*) (t+sizeof(uint8_t))) = ndim;
+		    memcpy(tensor_shape(t), shape, sizeof(size_t)*ndim);
+	    }
 
-	return t;
+	    return t;
+    }
+
+    return NULL;
 }
 
 
@@ -87,7 +104,7 @@ tensor_equal(
 
 
 size_t
-tensor_count_elements(
+tensor_count_length(
 	size_t ndim
 	, size_t * shape)
 {
@@ -100,10 +117,38 @@ tensor_count_elements(
 }
 
 
+uint8_t
+tensor_byte_size(Tensor * t)
+{
+    return *((uint8_t *) t);   
+}
+
+
+size_t
+tensor_ndim(Tensor * t)
+{
+    return *((size_t *) (t + sizeof(uint8_t)));
+}
+
+
+size_t *
+tensor_shape(Tensor * t)
+{
+    return (size_t *) (t + sizeof(uint8_t) + sizeof(size_t));
+}
+
+
+void *
+tensor_data(Tensor * t)
+{
+    return (void *) (t + ((tensor_ndim(t) + 1) * sizeof(size_t)) + sizeof(uint8_t));
+}
+
+
 size_t 
 tensor_length(Tensor * t)
 {
-	return tensor_count_elements(
+	return tensor_count_length(
 				tensor_ndim(t)
 				, tensor_shape(t));
 }
@@ -183,10 +228,27 @@ tensor_delete(Tensor * t)
 }
 
 
+/********************** private interface *************************/
 
 
+static bool 
+tensor_shape_valid(
+    size_t ndim
+    , size_t * shape)
+{
+    if(ndim > 0)
+    {
+        for(size_t i = 0; i < ndim; i++)
+        {
+            if(shape[i] == 0)
+                return false;
+        }
+        
+        return true;
+    }
 
-
+    return false;
+}
 
 
 

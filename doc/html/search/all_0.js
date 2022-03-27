@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['tensor_0',['Tensor',['../tensor_8h.html#acbd34269c83398c1842026553e2d8f23',1,'Tensor(float) *tensor_float_dot(Tensor(float) *t1:&#160;tensor.h'],['../tensor_8h.html#a1b7d2238abdf24e4c94dfef6cbd7492f',1,'Tensor(int8_t) *tensor_int8_dot(Tensor(int8_t) *t1:&#160;tensor.h'],['../tensor_8h.html#a8f3924b822b58825a1fd6b0859337ed7',1,'Tensor(uint8_t) *tensor_uint8_dot(Tensor(uint8_t) *t1:&#160;tensor.c']]],
+  ['tensor_0',['Tensor',['../tensor_8h.html#acbd34269c83398c1842026553e2d8f23',1,'Tensor(float) *tensor_float_dot(Tensor(float) *t1:&#160;tensor.h'],['../tensor_8h.html#a1b7d2238abdf24e4c94dfef6cbd7492f',1,'Tensor(int8_t) *tensor_int8_dot(Tensor(int8_t) *t1:&#160;tensor.h'],['../tensor_8h.html#a8f3924b822b58825a1fd6b0859337ed7',1,'Tensor(uint8_t) *tensor_uint8_dot(Tensor(uint8_t) *t1:&#160;tensor.h']]],
   ['tensor_2eh_1',['tensor.h',['../tensor_8h.html',1,'']]],
   ['tensor_5fadd_2',['tensor_add',['../tensor_8h.html#a643f74c2bc52f82e41cc10b2123c9eaf',1,'tensor.h']]],
   ['tensor_5fchar_5fadd_3',['tensor_char_add',['../tensor_8h.html#a06ff3eda2f25751e9b54e6086b1b3b94',1,'tensor.h']]],

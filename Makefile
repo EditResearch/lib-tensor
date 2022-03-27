@@ -50,7 +50,7 @@ test.o: test/test.c
 	$(CC) $(T_CFLAGS) -c test/test.c -o test.o
 
 
-test_tensor_generic.o: test/test_tensor_generic.c test/test_tensor_generic.h tensor_generic.o
+test_tensor_generic.o: test/test_tensor_generic.c test/test_tensor_generic.h tensor_generic.o test/test_config.h
 	$(CC) $(T_CFLAGS) -c test/test_tensor_generic.c -o test_tensor_generic.o
 
 

@@ -3,6 +3,7 @@
 
 #include <CUnit/Basic.h>
 
+#include "test_config.h"
 #include "../src/include/tensor_generic.h"
 
 
