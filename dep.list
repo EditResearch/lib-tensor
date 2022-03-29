@@ -1,0 +1,12 @@
+tensor.o: src/tensor.c src/include/tensor.h src/include/tensor_float.h \
+ src/include/tensor_generic.h src/include/tensor_int8.h
+tensor_float.o: src/tensor_float.c src/include/tensor_float.h \
+ src/include/tensor_generic.h
+tensor_generic.o: src/tensor_generic.c src/include/tensor_generic.h
+tensor_int8.o: src/tensor_int8.c src/include/tensor_int8.h \
+ src/include/tensor_generic.h
+test.o: test/test.c test/test_tensor_generic.h test/test_config.h \
+ test/../src/include/tensor_generic.h
+test_tensor_generic.o: test/test_tensor_generic.c \
+ test/test_tensor_generic.h test/test_config.h \
+ test/../src/include/tensor_generic.h

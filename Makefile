@@ -7,14 +7,16 @@ INCLUDE_PATH=/usr/include/
 TARGET=libtensor.a
 TEST=tensor_test
 BUILD=build
+DEP_LIST=dep.list
 
-MODULES=\
+
+OBJFILES=\
 tensor.o\
 tensor_generic.o\
 tensor_float.o\
 tensor_int8.o
 
-TEST_MODELS=\
+T_OBJFILES=\
 test.o\
 test_tensor_generic.o
 
@@ -26,55 +28,52 @@ gen_doc:
 	doxygen Doxyfile
 
 
-tensor.o: tensor_generic.o tensor_float.o src/tensor.c src/include/tensor.h
-	$(CC) $(CFLAGS) -c src/tensor.c -o tensor.o
+release: env $(OBJFILES)
+	ar rcs $(BUILD)/$(TARGET) $(OBJFILES)
 
 
-tensor_generic.o: src/tensor_generic.c src/include/tensor_generic.h
-	$(CC) $(CFLAGS) -c src/tensor_generic.c -o tensor_generic.o
+%.o:
+	$(CC) $(CFLAGS) -c $<
 
 
-tensor_float.o: tensor_generic.o src/tensor_float.c src/include/tensor_float.h
-	$(CC) $(CFLAGS) -c src/tensor_float.c -o tensor_float.o
+test: env $(T_OBJFILES) $(OBJFILES) 
+	$(CC) $(T_CFLAGS) $(OBJFILES) $(T_OBJFILES) $(T_LIBS) -o $(BUILD)/$(TEST)
 
 
-tensor_int8.o: tensor_generic.o src/tensor_int8.c src/include/tensor_int8.h
-	$(CC) $(CFLAGS) -c src/tensor_int8.c -o tensor_int8.o
-
-
-release: env $(MODULES)
-	ar rcs $(BUILD)/$(TARGET) $(MODULES)
-
-
-test.o: test/test.c
-	$(CC) $(T_CFLAGS) -c test/test.c -o test.o
-
-
-test_tensor_generic.o: test/test_tensor_generic.c test/test_tensor_generic.h tensor_generic.o test/test_config.h
-	$(CC) $(T_CFLAGS) -c test/test_tensor_generic.c -o test_tensor_generic.o
-
-
-test: env $(TEST_MODELS) $(MODULES)
-	$(CC) $(T_CFLAGS) $(MODULES) $(TEST_MODELS) $(T_LIBS) -o $(BUILD)/$(TEST)
+autotest: test
 	$(BUILD)/$(TEST)
 
 
+-include $(DEP_LIST)
+
+
+.PHONY: configure
+configure:
+	$(CC) -MM src/*.c test/*.c > $(DEP_LIST)
+
+
+.PHONY: env
 env:
 	mkdir -pv $(BUILD)
 
 
+.PHONY: install
 install:
 	mkdir -pv $(INCLUDE_PATH)/lib-tensor/
 	cp -rv src/include/*.h $(INCLUDE_PATH)/lib-tensor 
 	cp -v $(BUILD)/$(TARGET) $(LIB_PATH) 
 
 
+.PHONY: uninstall
 uninstall:
 	rm -rvf $(INCLUDE_PATH)/lib-tensor/
 	rm -fv $(LIB_PATH)/$(TARGET)
 
+
+.PHONY: clean
 clean:
 	rm -vfr $(BUILD)
-	rm -vf $(MODULES)
+	rm -vf $(OBJFILES)
+	rm -vf $(DEP_LIST)
 
 
