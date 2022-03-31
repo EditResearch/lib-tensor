@@ -25,8 +25,8 @@ typedef struct Tensor(float) Tensor(float);
 */
 Tensor(float) *
 tensor_float_new(
-    size_t ndim
-    , size_t * shape);
+    uint32_t ndim
+    , uint32_t * shape);
 
 
 /**
@@ -34,8 +34,8 @@ tensor_float_new(
 */
 Tensor(float) *
 tensor_float_new_from_array(
-	size_t ndim
-	, size_t * shape
+	uint32_t ndim
+	, uint32_t * shape
 	, void * array);
 
 
@@ -44,8 +44,8 @@ tensor_float_new_from_array(
 */
 Tensor(float) *
 tensor_float_new_zeros(
-    size_t ndim
-    , size_t * shape);
+    uint32_t ndim
+    , uint32_t * shape);
 
 
 /*
@@ -53,8 +53,8 @@ tensor_float_new_zeros(
 */
 Tensor(float) *
 tensor_float_new_random(
-	size_t ndim
-	, size_t * shape);
+	uint32_t ndim
+	, uint32_t * shape);
 
 
 

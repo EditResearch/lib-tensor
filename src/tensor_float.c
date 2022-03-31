@@ -17,50 +17,50 @@
 */
 Tensor(float) *
 tensor_float_new_from_array(
-	size_t ndim
-	, size_t * shape
+	uint32_t ndim
+	, uint32_t * shape
 	, void * array)
 {
 	size_t element_size = 
-		sizeof(float)*tensor_count_length(ndim, shape);
+		sizeof(float) * tensor_count_length(ndim, shape);
 
-	Tensor * tensor = 
+	Tensor * t = 
 		tensor_new(
 		    ndim
 		    , shape
             , sizeof(float)
 	        , element_size);
 
-	if(tensor != NULL)
+	if(t != NULL)
 	{
 		memcpy(
-			tensor+sizeof(size_t)*(ndim+1)
+			tensor_data(t)
 			, array
 			, element_size);
 	}
 
-	return (Tensor(float)*) tensor;
+	return (Tensor(float)*) t;
 }
 
 
 Tensor(float) *
 tensor_float_new_zeros(
-    size_t ndim
-    , size_t * shape)
+    uint32_t ndim
+    , uint32_t * shape)
 {
 	size_t element_size = 
 		tensor_count_length(ndim, shape);
 
-	Tensor * tensor = 
+	Tensor * t = 
 		tensor_new(
 			ndim
 			, shape
             , sizeof(float)
 			, sizeof(float) * element_size);
 
-	if(tensor != NULL)
+	if(t != NULL)
 	{
-		float * array = tensor_data(tensor);
+		float * array = tensor_data(t);
 
 		/* TODO: accelerate it with cpu threads, gpu acceleration is not needed */ 
 		for(size_t i = 0; i < element_size; i++)
@@ -69,28 +69,28 @@ tensor_float_new_zeros(
 		}
 	}
 
-	return (Tensor(float)*) tensor;
+	return (Tensor(float)*) t;
 }
 
 
 Tensor(float) *
 tensor_float_new_random(
-	size_t ndim
-	, size_t * shape)
+	uint32_t ndim
+	, uint32_t * shape)
 {
 	size_t element_size = 
 		tensor_count_length(ndim, shape);
 
-	Tensor * tensor = 
+	Tensor * t = 
 		tensor_new(
 			ndim
 			, shape
             , sizeof(float)
 			, sizeof(float) * element_size);
 
-	if(tensor != NULL)
+	if(t != NULL)
 	{
-		float * array = tensor_data(tensor);
+		float * array = tensor_data(t);
 
 		/* TODO: accelerate it with cpu threads, gpu acceleration is not needed */ 
 		for(size_t i = 0; i < element_size; i++)
@@ -99,15 +99,15 @@ tensor_float_new_random(
 		}
 	}
 
-	return (Tensor(float)*) tensor;
+	return (Tensor(float)*) t;
 }
 
 
 
 Tensor(float) *
 tensor_float_new(
-    size_t ndim
-    , size_t * shape)   
+    uint32_t ndim
+    , uint32_t * shape)   
 {
     return (Tensor(float)*) tensor_new(                                                             
 			                    ndim                                                             

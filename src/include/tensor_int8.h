@@ -24,8 +24,8 @@ typedef struct Tensor(bool) Tensor(bool);
 */
 Tensor(int8_t) *
 tensor_int8_new(
-    size_t ndim
-    , size_t * shape);
+    uint32_t ndim
+    , uint32_t * shape);
 
 
 /**
@@ -33,8 +33,8 @@ tensor_int8_new(
 */
 Tensor(uint8_t) *
 tensor_uint8_new(
-    size_t ndim
-    , size_t * shape);
+    uint32_t ndim
+    , uint32_t * shape);
 
 
 /**
@@ -42,16 +42,16 @@ tensor_uint8_new(
 */
 Tensor(char) *
 tensor_char_new(
-    size_t ndim
-    , size_t * shape);
+    uint32_t ndim
+    , uint32_t * shape);
 
 /**
 **
 */
 Tensor(bool) *
 tensor_bool_new(
-    size_t ndim
-    , size_t * shape);
+    uint32_t ndim
+    , uint32_t * shape);
 
 
 /**
@@ -59,8 +59,8 @@ tensor_bool_new(
 */
 Tensor(int8_t) *
 tensor_int8_new_from_array(
-	size_t ndim
-	, size_t * shape
+	uint32_t ndim
+	, uint32_t * shape
 	, void * array);
 
 
@@ -69,8 +69,8 @@ tensor_int8_new_from_array(
 */
 Tensor(char)*
 tensor_char_new_from_array(
-    size_t ndim
-    , size_t * shape
+    uint32_t ndim
+    , uint32_t * shape
     , void * array);
 
 
@@ -79,8 +79,8 @@ tensor_char_new_from_array(
 */
 Tensor(uint8_t) *
 tensor_uint8_new_from_array(
-    size_t ndim
-    , size_t * shape
+    uint32_t ndim
+    , uint32_t * shape
     , void * array);
 
 
@@ -89,8 +89,8 @@ tensor_uint8_new_from_array(
 */
 Tensor(bool) *
 tensor_bool_new_from_array(
-    size_t ndim
-    , size_t * shape
+    uint32_t ndim
+    , uint32_t * shape
     , void * array);
 
 
@@ -99,8 +99,8 @@ tensor_bool_new_from_array(
 */
 Tensor(int8_t) *
 tensor_int8_new_zeros(
-    size_t ndim
-    , size_t * shape);
+    uint32_t ndim
+    , uint32_t * shape);
 
 
 /**
@@ -108,8 +108,8 @@ tensor_int8_new_zeros(
 */
 Tensor(uint8_t) *
 tensor_uint8_new_zeros(
-    size_t ndim
-    , size_t * shape);
+    uint32_t ndim
+    , uint32_t * shape);
 
 
 /**
@@ -117,8 +117,8 @@ tensor_uint8_new_zeros(
 */
 Tensor(char) *
 tensor_char_new_zeros(
-    size_t ndim
-    , size_t * shape);
+    uint32_t ndim
+    , uint32_t * shape);
 
 
 /**
@@ -126,8 +126,8 @@ tensor_char_new_zeros(
 */
 Tensor(bool) *
 tensor_bool_new_false(
-    size_t ndim
-    , size_t * shape);
+    uint32_t ndim
+    , uint32_t * shape);
 
 
 /*
@@ -135,8 +135,8 @@ tensor_bool_new_false(
 */
 Tensor(int8_t) *
 tensor_int8_new_random(
-	size_t ndim
-	, size_t * shape);
+	uint32_t ndim
+	, uint32_t * shape);
 
 
 /**
@@ -144,8 +144,8 @@ tensor_int8_new_random(
 */
 Tensor(uint8_t) *
 tensor_uint8_new_random(
-    size_t ndim
-    , size_t * shape);
+    uint32_t ndim
+    , uint32_t * shape);
 
 
 /**
@@ -153,8 +153,8 @@ tensor_uint8_new_random(
 */
 Tensor(char) *
 tensor_char_new_random(
-    size_t ndim
-    , size_t * shape);
+    uint32_t ndim
+    , uint32_t * shape);
 
 
 /**
@@ -162,8 +162,8 @@ tensor_char_new_random(
 */
 Tensor(bool) * 
 tensor_bool_new_random(
-    size_t ndim
-    , size_t * shape);
+    uint32_t ndim
+    , uint32_t * shape);
 
 
 #endif

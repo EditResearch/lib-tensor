@@ -23,6 +23,12 @@
 #define Tensor(T) Tensor##T
 
 
+#define SHAPE(T)                    \
+    _Generic(                       \
+        (T)                         \
+        , Tensor*: (Shape*) T)
+
+
 /**
 ** Abstract Tensor class/structure for dynamic and generic 
 ** work with tensors instances
@@ -30,13 +36,21 @@
 typedef uint8_t Tensor;
 
 
+typedef struct Shape
+{
+   uint8_t byte_size;
+   uint32_t ndim;
+   uint32_t shape[];
+}Shape;
+
+
 /**
 **
 */
 Tensor *
 tensor_new(
-	size_t ndim
-	, size_t * shape
+	uint32_t ndim
+	, uint32_t * shape
     , uint8_t byte_size
 	, size_t data_byte_length);
 
@@ -46,8 +60,8 @@ tensor_new(
 */
 size_t
 tensor_count_length(
-	size_t ndim
-	, size_t * shape);
+	uint32_t ndim
+	, uint32_t * shape);
 
 
 /**
@@ -77,27 +91,38 @@ tensor_length(Tensor * t);
 **
 */
 bool
-tensor_reshape(Tensor * t);
+tensor_reshape(
+    Tensor * t
+    , uint32_t ndim
+    , uint32_t * shape);
 
 
-
+/**
+**
+*/
 uint8_t
 tensor_byte_size(Tensor * t);
 
 
-size_t
+/**
+**
+*/
+uint32_t
 tensor_ndim(Tensor * t);
 
 
-size_t *
+/**
+**
+*/
+uint32_t *
 tensor_shape(Tensor * t);
 
 
-
+/**
+**
+*/
 void *
 tensor_data(Tensor * t);
-
-
 
 
 /**

@@ -7,16 +7,9 @@
 
 static bool 
 tensor_shape_valid(
-    size_t ndim
-    , size_t * shape);
+    uint32_t ndim
+    , uint32_t * shape);
 
-
-static bool
-tensor_byte_size_valid(
-    size_t ndim
-    , size_t * shape
-    , uint8_t byze_size
-    , size_t data_byte_size);
 
 
 /*************************** public interface *********************************/
@@ -25,31 +18,30 @@ tensor_byte_size_valid(
 
 Tensor *
 tensor_new(
-	size_t ndim
-	, size_t * shape
+	uint32_t ndim
+	, uint32_t * shape
     , uint8_t byte_size
 	, size_t data_byte_length)
 {
-    if(tensor_shape_valid(ndim, shape) == true
-        && byte_size > 0
-        && data_byte_length > 0)
+    if(tensor_shape_valid(ndim, shape) == false
+        || byte_size == 0
+        || data_byte_length == 0)
+        return NULL;
+
+    Tensor * t = 
+            malloc(
+               sizeof(sizeof(Shape)) 
+               + (sizeof(uint32_t) * ndim) 
+               + data_byte_length);
+    
+    if(t != NULL)
     {
-	    Tensor * t = 
-		    malloc(
-		        data_byte_length + sizeof(uint8_t)
-		        + (sizeof(size_t) * (ndim+1)));
-
-	    if(t != NULL)
-	    {
-            *((uint8_t*) t) = byte_size;
-		    *((size_t*) (t+sizeof(uint8_t))) = ndim;
-		    memcpy(tensor_shape(t), shape, sizeof(size_t)*ndim);
-	    }
-
-	    return t;
+        SHAPE(t)->byte_size = byte_size;
+        SHAPE(t)->ndim = ndim;
+        memcpy(SHAPE(t)->shape, shape, sizeof(uint32_t) * ndim);
     }
 
-    return NULL;
+	return t;
 }
 
 
@@ -68,11 +60,19 @@ tensor_copy(Tensor * t)
 
 
 bool
-tensor_reshape(Tensor * t)
+tensor_reshape(
+    Tensor * t
+    , uint32_t ndim
+    , uint32_t * shape)
 {
-    (void)t;
+    if(tensor_count_length(ndim, shape) == tensor_length(t))
+    {
+        SHAPE(t)->ndim = ndim;
+        memcpy(SHAPE(t)->shape, shape, sizeof(uint32_t) * ndim);
 
-    /* TODO: code here */
+        return true;
+    }
+
     return false;
 }
 
@@ -84,33 +84,33 @@ tensor_equal(
 {
     size_t t1_ndim = tensor_ndim(t1);
 
-    if(t1_ndim == tensor_ndim(t2)
-       && tensor_byte_size(t1) == tensor_byte_size(t2))
-    {
-        if(memcmp(
-             tensor_shape(t1)
-             , tensor_shape(t2)
-             , sizeof(size_t) * t1_ndim) == 0)
-        {
-            return !memcmp(
-                      tensor_data(t1)
-                      , tensor_data(t2)
-                      , tensor_byte_size(t1) * tensor_length(t1));
-        }
-    }
+    if(t1_ndim != tensor_ndim(t2)
+       || tensor_byte_size(t1) != tensor_byte_size(t2))
+        return false;
 
-    return false;
+     if(memcmp(
+         tensor_shape(t1)
+         , tensor_shape(t2)
+         , sizeof(size_t) * t1_ndim) == 0)
+     {
+         return !memcmp(
+                   tensor_data(t1)
+                   , tensor_data(t2)
+                   , tensor_byte_size(t1) * tensor_length(t1));
+     }
+
+     return false;
 }
 
 
 size_t
 tensor_count_length(
-	size_t ndim
-	, size_t * shape)
+	uint32_t ndim
+	, uint32_t * shape)
 {
 	size_t element_size = shape[0];
 
-	for(size_t i = 1; i < ndim; i++)
+	for(uint32_t i = 1; i < ndim; i++)
 		element_size *= shape[i];
 
 	return element_size;
@@ -120,28 +120,28 @@ tensor_count_length(
 uint8_t
 tensor_byte_size(Tensor * t)
 {
-    return *((uint8_t *) t);   
+    return SHAPE(t)->byte_size;   
 }
 
 
-size_t
+uint32_t
 tensor_ndim(Tensor * t)
 {
-    return *((size_t *) (t + sizeof(uint8_t)));
+    return SHAPE(t)->ndim;
 }
 
 
-size_t *
+uint32_t *
 tensor_shape(Tensor * t)
 {
-    return (size_t *) (t + sizeof(uint8_t) + sizeof(size_t));
+    return SHAPE(t)->shape;
 }
 
 
 void *
 tensor_data(Tensor * t)
 {
-    return (void *) (t + ((tensor_ndim(t) + 1) * sizeof(size_t)) + sizeof(uint8_t));
+    return (void*) (t + sizeof(Shape) + (sizeof(uint32_t) * SHAPE(t)->ndim));
 }
 
 
@@ -149,8 +149,8 @@ size_t
 tensor_length(Tensor * t)
 {
 	return tensor_count_length(
-				tensor_ndim(t)
-				, tensor_shape(t));
+				SHAPE(t)->ndim
+				, SHAPE(t)->shape);
 }
 
 
@@ -233,21 +233,19 @@ tensor_delete(Tensor * t)
 
 static bool 
 tensor_shape_valid(
-    size_t ndim
-    , size_t * shape)
+    uint32_t ndim
+    , uint32_t * shape)
 {
-    if(ndim > 0)
+    if(ndim == 0)
+        return false;
+    
+    for(size_t i = 0; i < ndim; i++)
     {
-        for(size_t i = 0; i < ndim; i++)
-        {
-            if(shape[i] == 0)
-                return false;
-        }
-        
-        return true;
+         if(shape[i] == 0)
+            return false;
     }
-
-    return false;
+        
+    return true;
 }
 
 
