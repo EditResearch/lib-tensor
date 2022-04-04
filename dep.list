@@ -6,7 +6,9 @@ tensor_generic.o: src/tensor_generic.c src/include/tensor_generic.h
 tensor_int8.o: src/tensor_int8.c src/include/tensor_int8.h \
  src/include/tensor_generic.h
 test.o: test/test.c test/test_tensor_generic.h test/test_config.h \
- test/../src/include/tensor_generic.h
+ test/../src/include/tensor_generic.h test/../src/include/tensor.h \
+ test/../src/include/tensor_float.h test/../src/include/tensor_generic.h \
+ test/../src/include/tensor_int8.h
 test_tensor_generic.o: test/test_tensor_generic.c \
  test/test_tensor_generic.h test/test_config.h \
  test/../src/include/tensor_generic.h

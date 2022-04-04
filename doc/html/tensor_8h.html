@@ -97,10 +97,8 @@ Macros</h2></td></tr>
 <tr class="separator:af42fb8277d213e8974e7978e26d8def5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36b96a49931f155a81b20c0babc28d9c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>TENSOR</b>(T)</td></tr>
 <tr class="separator:a36b96a49931f155a81b20c0babc28d9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38559f4a93b40f1d27f151eea4f1e7dd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tensor_8h.html#a38559f4a93b40f1d27f151eea4f1e7dd">tensor_char_dot</a>(t1,  t2)</td></tr>
-<tr class="separator:a38559f4a93b40f1d27f151eea4f1e7dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2ed402ba1e4337c138e0e3125ba471c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tensor_8h.html#ae2ed402ba1e4337c138e0e3125ba471c">tensor_dot</a>(T1,  T2)</td></tr>
-<tr class="separator:ae2ed402ba1e4337c138e0e3125ba471c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cdcc8339a1bc520dc9a1afda23df66c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>tensor_show</b>(T)</td></tr>
+<tr class="separator:a9cdcc8339a1bc520dc9a1afda23df66c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06ff3eda2f25751e9b54e6086b1b3b94"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tensor_8h.html#a06ff3eda2f25751e9b54e6086b1b3b94">tensor_char_add</a>(t1,  t2)</td></tr>
 <tr class="separator:a06ff3eda2f25751e9b54e6086b1b3b94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a643f74c2bc52f82e41cc10b2123c9eaf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tensor_8h.html#a643f74c2bc52f82e41cc10b2123c9eaf">tensor_add</a>(T1,  T2)</td></tr>
@@ -113,22 +111,30 @@ Macros</h2></td></tr>
 <tr class="separator:ab6d74c11b36155ff44fa3da08a4f374d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19cacc0899ae12d6a339eba211e5bc99"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>tensor_multiply</b>(T1,  T2)</td></tr>
 <tr class="separator:a19cacc0899ae12d6a339eba211e5bc99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7953b99f856505606a88aeaff658b75c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tensor_8h.html#a7953b99f856505606a88aeaff658b75c">tensor_char_const_multiply</a>(t,  n)</td></tr>
-<tr class="separator:a7953b99f856505606a88aeaff658b75c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39fe60f1e50f009c544c9d8af77d01a8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>tensor_const_multiply</b>(T,  n)</td></tr>
 <tr class="separator:a39fe60f1e50f009c544c9d8af77d01a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad407e58d4d082fe32d7ac5f62c3614f3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>tensor_transpose</b>(T)</td></tr>
+<tr class="separator:ad407e58d4d082fe32d7ac5f62c3614f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9744a3cffc084d1bf6b4d5f586284309"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><b>tensor_inverse</b>(T)</td></tr>
+<tr class="separator:a9744a3cffc084d1bf6b4d5f586284309"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ad093c504dfe3cb344a17f0ff5b1fb5ec"><td class="memItemLeft" align="right" valign="top"><a id="ad093c504dfe3cb344a17f0ff5b1fb5ec"></a>
 const char *&#160;</td><td class="memItemRight" valign="bottom"><b>tensor_version</b> (void)</td></tr>
 <tr class="separator:ad093c504dfe3cb344a17f0ff5b1fb5ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbd34269c83398c1842026553e2d8f23"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a> (float) *tensor_float_dot(Tensor(float) *t1</td></tr>
-<tr class="separator:acbd34269c83398c1842026553e2d8f23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b7d2238abdf24e4c94dfef6cbd7492f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tensor_8h.html#a1b7d2238abdf24e4c94dfef6cbd7492f">Tensor</a> (int8_t) *tensor_int8_dot(Tensor(int8_t) *t1</td></tr>
-<tr class="separator:a1b7d2238abdf24e4c94dfef6cbd7492f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f3924b822b58825a1fd6b0859337ed7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tensor_8h.html#a8f3924b822b58825a1fd6b0859337ed7">Tensor</a> (uint8_t) *tensor_uint8_dot(Tensor(uint8_t) *t1</td></tr>
-<tr class="separator:a8f3924b822b58825a1fd6b0859337ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dafb10024212d7b59caf9a81cacb13c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a> (float) *tensor_float_add(Tensor(float) *t1</td></tr>
+<tr class="separator:a7dafb10024212d7b59caf9a81cacb13c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee44ea8b866dfe6e0baeacdcf4e96b7e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tensor_8h.html#aee44ea8b866dfe6e0baeacdcf4e96b7e">Tensor</a> (int8_t) *tensor_int8_add(Tensor(int8_t) *t1</td></tr>
+<tr class="separator:aee44ea8b866dfe6e0baeacdcf4e96b7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24ae7187fc83e2efed62bbb480ec2190"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tensor_8h.html#a24ae7187fc83e2efed62bbb480ec2190">Tensor</a> (uint8_t) *tensor_uint8_add(Tensor(uint8_t) *t1</td></tr>
+<tr class="separator:a24ae7187fc83e2efed62bbb480ec2190"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae22fe64265c5f2a3d29a682e7b986a78"><td class="memItemLeft" align="right" valign="top"><a id="ae22fe64265c5f2a3d29a682e7b986a78"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Tensor</b> (char) *tensor_char_transpose(Tensor(char) *tensor)</td></tr>
+<tr class="separator:ae22fe64265c5f2a3d29a682e7b986a78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15c2219664698bb4a26a67a01da53842"><td class="memItemLeft" align="right" valign="top"><a id="a15c2219664698bb4a26a67a01da53842"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Tensor</b> (bool) *tensor_bool_transpose(Tensor(bool) *tensor)</td></tr>
+<tr class="separator:a15c2219664698bb4a26a67a01da53842"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -158,12 +164,12 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>n</b></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    _Generic(                               \</div>
 <div class="line">        (T)                                 \</div>
 <div class="line">        , Tensor*: T                        \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(<span class="keywordtype">float</span>)*:   (Tensor*) T     \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(int8_t)*:  (Tensor*) T     \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(uint8_t)*: (Tensor*) T     \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(<span class="keywordtype">char</span>)*:    (Tensor*) T     \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(<span class="keywordtype">bool</span>)*:    (Tensor*) T)</div>
-<div class="ttc" id="atensor_8h_html_acbd34269c83398c1842026553e2d8f23"><div class="ttname"><a href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a></div><div class="ttdeci">Tensor(float) *tensor_float_dot(Tensor(float) *t1</div></div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(<span class="keywordtype">float</span>)*:   (Tensor*) T     \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(int8_t)*:  (Tensor*) T     \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(uint8_t)*: (Tensor*) T     \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(<span class="keywordtype">char</span>)*:    (Tensor*) T     \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(<span class="keywordtype">bool</span>)*:    (Tensor*) T)</div>
+<div class="ttc" id="atensor_8h_html_a7dafb10024212d7b59caf9a81cacb13c"><div class="ttname"><a href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a></div><div class="ttdeci">Tensor(float) *tensor_float_add(Tensor(float) *t1</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -194,12 +200,12 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>n</b></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    _Generic(                                   \</div>
 <div class="line">        (T1)                                    \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(<span class="keywordtype">float</span>)*: tensor_float_add      \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(int8_t)*: tensor_int8_add      \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(uint8_t)*: tensor_uint8_add    \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(<span class="keywordtype">char</span>)*:    <a class="code" href="tensor_8h.html#a06ff3eda2f25751e9b54e6086b1b3b94">tensor_char_add</a>)    \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(<span class="keywordtype">float</span>)*: tensor_float_add      \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(int8_t)*: tensor_int8_add      \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(uint8_t)*: tensor_uint8_add    \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(<span class="keywordtype">char</span>)*:    <a class="code" href="tensor_8h.html#a06ff3eda2f25751e9b54e6086b1b3b94">tensor_char_add</a>)    \</div>
 <div class="line">            (T1, T2)</div>
-<div class="ttc" id="atensor_8h_html_a06ff3eda2f25751e9b54e6086b1b3b94"><div class="ttname"><a href="tensor_8h.html#a06ff3eda2f25751e9b54e6086b1b3b94">tensor_char_add</a></div><div class="ttdeci">#define tensor_char_add(t1, t2)</div><div class="ttdef"><b>Definition:</b> tensor.h:135</div></div>
+<div class="ttc" id="atensor_8h_html_a06ff3eda2f25751e9b54e6086b1b3b94"><div class="ttname"><a href="tensor_8h.html#a06ff3eda2f25751e9b54e6086b1b3b94">tensor_char_add</a></div><div class="ttdeci">#define tensor_char_add(t1, t2)</div><div class="ttdef"><b>Definition:</b> tensor.h:103</div></div>
 </div><!-- fragment --><p>Generic macro for dynamic switching of called addition function based on used tensor data type </p>
 
 </div>
@@ -231,8 +237,8 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>n</b></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    _Generic(                                               \</div>
 <div class="line">        (t1)                                                \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(<span class="keywordtype">char</span>)*: tensor_int8_add)                   \</div>
-<div class="line">            ((<a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(int8_t)*) t1, (<a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(int8_t)*) t2)</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(<span class="keywordtype">char</span>)*: tensor_int8_add)                   \</div>
+<div class="line">            ((<a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(int8_t)*) t1, (<a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(int8_t)*) t2)</div>
 </div><!-- fragment --><p>TODO: treat type check for second input parameter </p>
 
 </div>
@@ -264,74 +270,8 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>n</b></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    _Generic(                                       \</div>
 <div class="line">        (t)                                         \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(<span class="keywordtype">char</span>)*: tensor_int8_const_add)     \</div>
-<div class="line">            ((<a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(int8_t)*) t, (int8_t) n)</div>
-</div><!-- fragment --><p>TODO: treat type check for second input parameter </p>
-
-</div>
-</div>
-<a id="a7953b99f856505606a88aeaff658b75c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7953b99f856505606a88aeaff658b75c">&#9670;&nbsp;</a></span>tensor_char_const_multiply</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define tensor_char_const_multiply</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">t, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">n&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    _Generic(                                           \</div>
-<div class="line">        (t)                                             \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(<span class="keywordtype">char</span>)*: tensor_int8_const_multiply)    \</div>
-<div class="line">            ((<a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(int8_t) t), (int8_t) n)</div>
-</div><!-- fragment --><p>TODO: treat type check for second input parameter </p>
-
-</div>
-</div>
-<a id="a38559f4a93b40f1d27f151eea4f1e7dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a38559f4a93b40f1d27f151eea4f1e7dd">&#9670;&nbsp;</a></span>tensor_char_dot</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define tensor_char_dot</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">t1, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">t2&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    _Generic(                                               \</div>
-<div class="line">        (t1)                                                \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(<span class="keywordtype">char</span>)*: tensor_int8_dot)                   \</div>
-<div class="line">            ((<a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(int8_t)*) t1, (<a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(int8_t)*) t2</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(<span class="keywordtype">char</span>)*: tensor_int8_const_add)     \</div>
+<div class="line">            ((<a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(int8_t)*) t, (int8_t) n)</div>
 </div><!-- fragment --><p>TODO: treat type check for second input parameter </p>
 
 </div>
@@ -363,8 +303,8 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>n</b></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    _Generic(                                           \</div>
 <div class="line">        (t1)                                            \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(<span class="keywordtype">char</span>)*: tensor_int8_multiply)          \</div>
-<div class="line">            ((<a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(int8_t)*) t1, (<a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(int8_t)*) t2)</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(<span class="keywordtype">char</span>)*: tensor_int8_multiply)          \</div>
+<div class="line">            ((<a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(int8_t)*) t1, (<a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(int8_t)*) t2)</div>
 </div><!-- fragment --><p>TODO: treat type check for second input parameter </p>
 
 </div>
@@ -396,12 +336,12 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>n</b></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    _Generic(                                           \</div>
 <div class="line">        (T)                                             \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(<span class="keywordtype">float</span>)*: tensor_float_const_add        \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(int8_t)*: tensor_int8_const_add        \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(uint8_t)*: tensor_uint8_const_add      \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(<span class="keywordtype">char</span>)*: <a class="code" href="tensor_8h.html#a8cd95acd7c700714051b225d1499810a">tensor_char_const_add</a>)         \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(<span class="keywordtype">float</span>)*: tensor_float_const_add        \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(int8_t)*: tensor_int8_const_add        \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(uint8_t)*: tensor_uint8_const_add      \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(<span class="keywordtype">char</span>)*: <a class="code" href="tensor_8h.html#a8cd95acd7c700714051b225d1499810a">tensor_char_const_add</a>)         \</div>
 <div class="line">            (T, n)</div>
-<div class="ttc" id="atensor_8h_html_a8cd95acd7c700714051b225d1499810a"><div class="ttname"><a href="tensor_8h.html#a8cd95acd7c700714051b225d1499810a">tensor_char_const_add</a></div><div class="ttdeci">#define tensor_char_const_add(t, n)</div><div class="ttdef"><b>Definition:</b> tensor.h:186</div></div>
+<div class="ttc" id="atensor_8h_html_a8cd95acd7c700714051b225d1499810a"><div class="ttname"><a href="tensor_8h.html#a8cd95acd7c700714051b225d1499810a">tensor_char_const_add</a></div><div class="ttdeci">#define tensor_char_const_add(t, n)</div><div class="ttdef"><b>Definition:</b> tensor.h:154</div></div>
 </div><!-- fragment --><p>Generic macro for dynamic switching of called addition function based on used tensor data type </p>
 
 </div>
@@ -431,52 +371,39 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>n</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    _Generic(                                           \</div>
-<div class="line">        (T)                                             \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(<span class="keywordtype">float</span>)*: tensor_float_const_multiply   \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(int8_t)*: tensor_int8_const_multiply   \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(uint8_t)*: tensor_uint8_const_multiply \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(<span class="keywordtype">char</span>)*: <a class="code" href="tensor_8h.html#a7953b99f856505606a88aeaff658b75c">tensor_char_const_multiply</a>)    \</div>
+<b>Value:</b><div class="fragment"><div class="line">    _Generic(                                            \</div>
+<div class="line">        (T)                                              \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(<span class="keywordtype">float</span>)*   : tensor_float_const_multiply \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(int8_t)*  : tensor_int8_const_multiply  \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(uint8_t)* : tensor_uint8_const_multiply) \</div>
 <div class="line">            (T, n)</div>
-<div class="ttc" id="atensor_8h_html_a7953b99f856505606a88aeaff658b75c"><div class="ttname"><a href="tensor_8h.html#a7953b99f856505606a88aeaff658b75c">tensor_char_const_multiply</a></div><div class="ttdeci">#define tensor_char_const_multiply(t, n)</div><div class="ttdef"><b>Definition:</b> tensor.h:288</div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ae2ed402ba1e4337c138e0e3125ba471c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae2ed402ba1e4337c138e0e3125ba471c">&#9670;&nbsp;</a></span>tensor_dot</h2>
+<a id="a9744a3cffc084d1bf6b4d5f586284309"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9744a3cffc084d1bf6b4d5f586284309">&#9670;&nbsp;</a></span>tensor_inverse</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define tensor_dot</td>
+          <td class="memname">#define tensor_inverse</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname">T1, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname">T</td><td>)</td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">T2&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    _Generic(                                   \</div>
-<div class="line">        (T1)                                    \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(<span class="keywordtype">float</span>)*: tensor_float_dot      \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(int8_t)*: tensor_int8_dot      \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(uint8_t)*: tensor_uint8_dot    \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(<span class="keywordtype">char</span>)*   : <a class="code" href="tensor_8h.html#a38559f4a93b40f1d27f151eea4f1e7dd">tensor_char_dot</a>)    \</div>
-<div class="line">            (T1, T2)</div>
-<div class="ttc" id="atensor_8h_html_a38559f4a93b40f1d27f151eea4f1e7dd"><div class="ttname"><a href="tensor_8h.html#a38559f4a93b40f1d27f151eea4f1e7dd">tensor_char_dot</a></div><div class="ttdeci">#define tensor_char_dot(t1, t2)</div><div class="ttdef"><b>Definition:</b> tensor.h:84</div></div>
-</div><!-- fragment --><p>Generic macro for dynamic switching of called dot product function based on used tensor data type </p>
-
+<b>Value:</b><div class="fragment"><div class="line">    _Generic(                                           \</div>
+<div class="line">        (T)                                             \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(<span class="keywordtype">float</span>)*: tensor_float_inverse          \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(int8_t)*: tensor_int8_inverse          \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(uint8_t)*: tensor_uint8_inverse        \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(<span class="keywordtype">char</span>)*: tensor_char_inverse            \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(<span class="keywordtype">bool</span>)*: tensor_bool_inverse)           \</div>
+<div class="line">            (T)</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a19cacc0899ae12d6a339eba211e5bc99"></a>
@@ -506,18 +433,70 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>n</b></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    _Generic(                                           \</div>
 <div class="line">        (T1)                                            \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(<span class="keywordtype">float</span>)*: tensor_float_multiply         \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(int8_t)*: tensor_int8_multipy          \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(uint8_t)*: tensor_uint8_multiply       \</div>
-<div class="line">        , <a class="code" href="tensor_8h.html#acbd34269c83398c1842026553e2d8f23">Tensor</a>(<span class="keywordtype">char</span>)*: <a class="code" href="tensor_8h.html#ab6d74c11b36155ff44fa3da08a4f374d">tensor_char_multiply</a>)          \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(<span class="keywordtype">float</span>)*: tensor_float_multiply         \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(int8_t)*: tensor_int8_multipy          \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(uint8_t)*: tensor_uint8_multiply       \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(<span class="keywordtype">char</span>)*: <a class="code" href="tensor_8h.html#ab6d74c11b36155ff44fa3da08a4f374d">tensor_char_multiply</a>)          \</div>
 <div class="line">            (T1, T2)</div>
-<div class="ttc" id="atensor_8h_html_ab6d74c11b36155ff44fa3da08a4f374d"><div class="ttname"><a href="tensor_8h.html#ab6d74c11b36155ff44fa3da08a4f374d">tensor_char_multiply</a></div><div class="ttdeci">#define tensor_char_multiply(t1, t2)</div><div class="ttdef"><b>Definition:</b> tensor.h:238</div></div>
+<div class="ttc" id="atensor_8h_html_ab6d74c11b36155ff44fa3da08a4f374d"><div class="ttname"><a href="tensor_8h.html#ab6d74c11b36155ff44fa3da08a4f374d">tensor_char_multiply</a></div><div class="ttdeci">#define tensor_char_multiply(t1, t2)</div><div class="ttdef"><b>Definition:</b> tensor.h:206</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9cdcc8339a1bc520dc9a1afda23df66c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cdcc8339a1bc520dc9a1afda23df66c">&#9670;&nbsp;</a></span>tensor_show</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define tensor_show</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">T</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    _Generic(                                   \</div>
+<div class="line">        (T)                                     \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(int8_t)*:  tensor_int8_show    \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(uint8_t)*: tensor_uint8_show   \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(<span class="keywordtype">char</span>)*: tensor_char_show       \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(<span class="keywordtype">bool</span>)*: tensor_bool_show       \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(<span class="keywordtype">float</span>)*: tensor_float_show)    \</div>
+<div class="line">            (T)</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad407e58d4d082fe32d7ac5f62c3614f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad407e58d4d082fe32d7ac5f62c3614f3">&#9670;&nbsp;</a></span>tensor_transpose</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define tensor_transpose</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">T</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    _Generic(                                           \</div>
+<div class="line">        (T)                                             \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(<span class="keywordtype">float</span>)*: tensor_float_transpose        \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(int8_t)*: tensor_int8_transpose        \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(uint8_t)*: tensor_uint8_transpose      \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(<span class="keywordtype">char</span>)*: tensor_char_transpose          \</div>
+<div class="line">        , <a class="code" href="tensor_8h.html#a7dafb10024212d7b59caf9a81cacb13c">Tensor</a>(<span class="keywordtype">bool</span>)*: tensor_bool_transpose)         \</div>
+<div class="line">            (T)</div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="acbd34269c83398c1842026553e2d8f23"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acbd34269c83398c1842026553e2d8f23">&#9670;&nbsp;</a></span>Tensor() <span class="overload">[1/3]</span></h2>
+<a id="a7dafb10024212d7b59caf9a81cacb13c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7dafb10024212d7b59caf9a81cacb13c">&#9670;&nbsp;</a></span>Tensor() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -531,14 +510,13 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>n</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Dot operation on tensor of float type</p>
 <p>Addition opration of two float tensors</p>
 <p>Addition operation of tensor of float with float constant </p>
 
 </div>
 </div>
-<a id="a1b7d2238abdf24e4c94dfef6cbd7492f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b7d2238abdf24e4c94dfef6cbd7492f">&#9670;&nbsp;</a></span>Tensor() <span class="overload">[2/3]</span></h2>
+<a id="aee44ea8b866dfe6e0baeacdcf4e96b7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee44ea8b866dfe6e0baeacdcf4e96b7e">&#9670;&nbsp;</a></span>Tensor() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -552,13 +530,12 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>n</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Dot operation on tensor of int8_t type</p>
 <p>Addition operation of tensor of int8_t with int8_t constant </p>
 
 </div>
 </div>
-<a id="a8f3924b822b58825a1fd6b0859337ed7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f3924b822b58825a1fd6b0859337ed7">&#9670;&nbsp;</a></span>Tensor() <span class="overload">[3/3]</span></h2>
+<a id="a24ae7187fc83e2efed62bbb480ec2190"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24ae7187fc83e2efed62bbb480ec2190">&#9670;&nbsp;</a></span>Tensor() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -572,7 +549,6 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>n</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Dot operation on tensor of uint8_t type</p>
 <p>Addition operation of tensor of float with float constant </p>
 
 </div>

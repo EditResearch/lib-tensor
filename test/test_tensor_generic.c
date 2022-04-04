@@ -8,11 +8,11 @@
 
 static bool
 is_elem(
-    size_t value
-    , size_t size
-    , const size_t * array)
+    uint32_t value
+    , uint32_t size
+    , const uint32_t * array)
 {
-    for(size_t i = 0; i < size; i++)
+    for(uint32_t i = 0; i < size; i++)
     {
         if(array[i] == value)
             return true;
@@ -33,8 +33,8 @@ tensor_constructor_and_destructor_test(void)
 {
     for(int i = 0; i < TEST_CYCLES; i ++)
     {
-        size_t ndim = rand() % (NDIM_MAX-NDIM_MIN) + NDIM_MIN;
-        size_t * shape = malloc(sizeof(size_t)*ndim);
+        uint32_t ndim = rand() % (NDIM_MAX-NDIM_MIN) + NDIM_MIN;
+        uint32_t * shape = malloc(sizeof(uint32_t)*ndim);
         
         if(shape == NULL)
         {
@@ -42,9 +42,9 @@ tensor_constructor_and_destructor_test(void)
             return;
         }
 
-        size_t length = 1;    
+        uint32_t length = 1;    
 
-        for(size_t j = 0; j < ndim; j ++)
+        for(uint32_t j = 0; j < ndim; j ++)
         {
             shape[j] = rand() % DIMENSION_MAX;
             length *= shape[j];
@@ -73,8 +73,8 @@ tensor_count_length_test(void)
 {
     for(int i = 0; i < TEST_CYCLES; i ++)
     {
-        size_t ndim = rand() % (NDIM_MAX-NDIM_MIN) + NDIM_MIN;
-        size_t * shape = malloc(sizeof(size_t)*ndim);
+        uint32_t ndim = rand() % (NDIM_MAX-NDIM_MIN) + NDIM_MIN;
+        uint32_t * shape = malloc(sizeof(uint32_t)*ndim);
         
         if(shape == NULL)
         {
@@ -82,12 +82,12 @@ tensor_count_length_test(void)
             return;
         }
 
-        for(size_t j = 0; j < ndim; j ++)
+        for(uint32_t j = 0; j < ndim; j ++)
         {
             shape[j] = rand() % (DIMENSION_MAX - DIMENSION_MIN) + DIMENSION_MIN;
         }
 
-        size_t elements = tensor_count_length(ndim, shape);
+        uint32_t elements = tensor_count_length(ndim, shape);
 
         /* non-zero test */
         if(ndim != 0
@@ -100,7 +100,7 @@ tensor_count_length_test(void)
         else
         {
             /* divisibility test */
-            for(size_t j = 0; j < ndim; j++)
+            for(uint32_t j = 0; j < ndim; j++)
             {
                 CU_ASSERT_EQUAL(elements % shape[j], 0);
             }
@@ -115,10 +115,10 @@ tensor_count_length_test(void)
 static void
 tensor_copy_test(void)
 {
-    for(size_t i = 0; i < TEST_CYCLES; i++)
+    for(uint32_t i = 0; i < TEST_CYCLES; i++)
     {      
-        size_t ndim = rand() % (NDIM_MAX-NDIM_MIN) + NDIM_MIN;
-        size_t * shape = malloc(sizeof(size_t)*ndim);
+        uint32_t ndim = rand() % (NDIM_MAX-NDIM_MIN) + NDIM_MIN;
+        uint32_t * shape = malloc(sizeof(uint32_t)*ndim);
         
         if(shape == NULL)
         {
@@ -126,8 +126,8 @@ tensor_copy_test(void)
             return;
         }
 
-        size_t length = 1;
-        for(size_t j = 0; j < ndim; j ++)
+        uint32_t length = 1;
+        for(uint32_t j = 0; j < ndim; j ++)
         {
             shape[j] = rand() % (DIMENSION_MAX-DIMENSION_MIN) + DIMENSION_MIN;
             length *= shape[j];
@@ -143,7 +143,7 @@ tensor_copy_test(void)
             if(t2 != NULL)
             {
                 /* byte comparation test */
-                if(memcmp(t1, t2, 1+length+(sizeof(size_t)*(ndim+1))) == 0)
+                if(memcmp(t1, t2, 1+length+(sizeof(uint32_t)*(ndim+1))) == 0)
                 {
                     CU_PASS("Tensors are the same.");
                 }
@@ -174,13 +174,13 @@ tensor_copy_test(void)
 static void
 tensor_equal_test(void)
 {
-    for(size_t i = 0; i < TEST_CYCLES; i++)
+    for(uint32_t i = 0; i < TEST_CYCLES; i++)
     {      
-        size_t ndim_1 = rand() % (NDIM_MAX-NDIM_MIN) + NDIM_MIN;
-        size_t * shape_1 = malloc(sizeof(size_t)*ndim_1);
+        uint32_t ndim_1 = rand() % (NDIM_MAX-NDIM_MIN) + NDIM_MIN;
+        uint32_t * shape_1 = malloc(sizeof(uint32_t)*ndim_1);
 
-        size_t ndim_2 = rand() % (NDIM_MAX-NDIM_MIN) + NDIM_MIN;
-        size_t * shape_2 = malloc(sizeof(size_t)*ndim_2);
+        uint32_t ndim_2 = rand() % (NDIM_MAX-NDIM_MIN) + NDIM_MIN;
+        uint32_t * shape_2 = malloc(sizeof(uint32_t)*ndim_2);
         
         if(shape_1 == NULL 
             && shape_2 != NULL)
@@ -189,16 +189,16 @@ tensor_equal_test(void)
             return;
         }
 
-        size_t length_1 = 1;
-        size_t length_2 = 1;
+        uint32_t length_1 = 1;
+        uint32_t length_2 = 1;
 
-        for(size_t j = 0; j < ndim_1; j ++)
+        for(uint32_t j = 0; j < ndim_1; j ++)
         {
             shape_1[j] = rand() % (DIMENSION_MAX-DIMENSION_MIN) + DIMENSION_MIN ;
             length_1 *= shape_1[j];
         }
 
-        for(size_t j = 0; j < ndim_2; j ++)
+        for(uint32_t j = 0; j < ndim_2; j ++)
         {
             shape_2[j] = rand() % (DIMENSION_MAX - DIMENSION_MIN) + DIMENSION_MIN;
             length_2 *= shape_2[j];
@@ -239,8 +239,8 @@ tensor_length_test(void)
 {
     for(int i = 0; i < TEST_CYCLES; i ++)
     {
-        size_t ndim = rand() % (NDIM_MAX-NDIM_MIN) + NDIM_MIN;
-        size_t * shape = malloc(sizeof(size_t)*ndim);
+        uint32_t ndim = rand() % (NDIM_MAX-NDIM_MIN) + NDIM_MIN;
+        uint32_t * shape = malloc(sizeof(uint32_t)*ndim);
         
         if(shape == NULL)
         {
@@ -248,9 +248,9 @@ tensor_length_test(void)
             return;
         }
 
-        size_t length = 1;
+        uint32_t length = 1;
 
-        for(size_t j = 0; j < ndim; j ++)
+        for(uint32_t j = 0; j < ndim; j ++)
         {
             shape[j] = rand() % (DIMENSION_MAX - DIMENSION_MIN) + DIMENSION_MIN;
             length *= shape[j];
@@ -260,7 +260,7 @@ tensor_length_test(void)
         
         if(tensor != NULL)
         {
-            size_t t_length = tensor_length(tensor);
+            uint32_t t_length = tensor_length(tensor);
 
             /* non-zero test */
             if(ndim != 0
@@ -273,7 +273,7 @@ tensor_length_test(void)
             else
             {
                 /* divisibility test */
-                for(size_t j = 0; j < ndim; j++)
+                for(uint32_t j = 0; j < ndim; j++)
                 {   
                     CU_ASSERT_EQUAL(t_length % shape[j], 0);
                 }
@@ -306,10 +306,10 @@ tensor_byte_size_test(void)
 static void
 tensor_ndim_test(void)
 {
-    for(size_t i = 0; i < TEST_CYCLES; i++)
+    for(uint32_t i = 0; i < TEST_CYCLES; i++)
     {      
-        size_t ndim = 1+(rand() % (NDIM_MAX-1));
-        size_t * shape = malloc(sizeof(size_t)*ndim);
+        uint32_t ndim = 1+(rand() % (NDIM_MAX-1));
+        uint32_t * shape = malloc(sizeof(uint32_t)*ndim);
         
         if(shape == NULL)
         {
@@ -317,8 +317,8 @@ tensor_ndim_test(void)
             return;
         }
 
-        size_t length = 1;
-        for(size_t j = 0; j < ndim; j ++)
+        uint32_t length = 1;
+        for(uint32_t j = 0; j < ndim; j ++)
         {
             shape[j] = 1 + (rand() % (DIMENSION_MAX-1));
             length *= shape[j];
@@ -345,10 +345,10 @@ tensor_ndim_test(void)
 static void
 tensor_shape_test(void)
 {
-    for(size_t i = 0; i < TEST_CYCLES; i++)
+    for(uint32_t i = 0; i < TEST_CYCLES; i++)
     {      
-        size_t ndim = 1+(rand() % (NDIM_MAX-1));
-        size_t * shape = malloc(sizeof(size_t)*ndim);
+        uint32_t ndim = 1+(rand() % (NDIM_MAX-1));
+        uint32_t * shape = malloc(sizeof(uint32_t)*ndim);
         
         if(shape == NULL)
         {
@@ -356,8 +356,8 @@ tensor_shape_test(void)
             return;
         }
 
-        size_t length = 1;
-        for(size_t j = 0; j < ndim; j ++)
+        uint32_t length = 1;
+        for(uint32_t j = 0; j < ndim; j ++)
         {
             shape[j] = 1 + (rand() % (DIMENSION_MAX-1));
             length *= shape[j];
@@ -367,7 +367,7 @@ tensor_shape_test(void)
         
         if(tensor != NULL)
         {
-            for(size_t j = 0; j < ndim; j++)
+            for(uint32_t j = 0; j < ndim; j++)
             {
                 CU_ASSERT_EQUAL(tensor_shape(tensor)[j], shape[j]);
             }
@@ -416,18 +416,18 @@ clean_up(void)
 static void
 show_ndim(Tensor * t)
 {
-    size_t * shape = tensor_shape(t);
-    size_t ndim = tensor_ndim(t);
+    uint32_t * shape = tensor_shape(t);
+    uint32_t ndim = tensor_ndim(t);
 
-    printf("Ndim = %ld, ", ndim);
+    printf("Ndim = %d, ", ndim);
     printf("Shape {");
 
-    for(size_t i = 0; i < ndim; i++)
+    for(uint32_t i = 0; i < ndim; i++)
     {
         if(i == 0)
-            printf("%ld", shape[i]);
+            printf("%d", shape[i]);
         else
-            printf(", %ld", shape[i]);
+            printf(", %d", shape[i]);
     }
     printf("}\n");
 }

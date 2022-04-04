@@ -49,84 +49,28 @@ tensor_version(void);
         , Tensor(bool)*:    (Tensor*) T)     
 
 
-
-/**
-** Dot operation on tensor of float type
-*/
-Tensor(float) * 
-tensor_float_dot(
-	Tensor(float) * t1
-	, Tensor(float) * t2);
-
-
-/**
-** Dot operation on tensor of int8_t type
-*/
-Tensor(int8_t) * 
-tensor_int8_dot(
-	Tensor(int8_t) * t1
-	, Tensor(int8_t) * t2);
+#define TENSOR_TYPE(T)                              \
+    _Generic(                                       \
+        (T)                                         \
+        , Tensor*: "Tensor"                         \
+        , Tensor(uint8_t)*: "Tensor(uint8_t)"       \
+        , Tensor(int8_t)*: "Tensor(int8_t)"         \
+        , Tensor(char)*: "Tensor(char)"             \
+        , Tensor(bool)*: "Tensor(bool)"             \
+        , Tensor(float)*: "Tensor(float)"           \
+        , default: "Unknown")                       
 
 
-/**
-** Dot operation on tensor of uint8_t type
-*/
-Tensor(uint8_t) * 
-tensor_uint8_dot(
-	Tensor(uint8_t) * t1
-	, Tensor(uint8_t) * t2);
+#define tensor_show(T)                          \
+    _Generic(                                   \
+        (T)                                     \
+        , Tensor(int8_t)*:  tensor_int8_show    \
+        , Tensor(uint8_t)*: tensor_uint8_show   \
+        , Tensor(char)*: tensor_char_show       \
+        , Tensor(bool)*: tensor_bool_show       \
+        , Tensor(float)*: tensor_float_show)    \
+            (T)
 
-
-
-/**
-** TODO: treat type check for second input parameter
-*/
-#define tensor_char_dot(t1, t2)                             \
-    _Generic(                                               \
-        (t1)                                                \
-        , Tensor(char)*: tensor_int8_dot)                   \
-            ((Tensor(int8_t)*) t1, (Tensor(int8_t)*) t2
-
-
-/**
-** Generic macro for dynamic switching of called dot product function
-** based on used tensor data type
-*/
-#define tensor_dot(T1, T2)						\
-	_Generic(									\
-		(T1)									\
-		, Tensor(float)*: tensor_float_dot      \
-        , Tensor(int8_t)*: tensor_int8_dot      \
-        , Tensor(uint8_t)*: tensor_uint8_dot    \
-        , Tensor(char)*   : tensor_char_dot)	\
-			(T1, T2)
-
-
-/**
-** Addition opration of two float tensors 
-*/
-Tensor(float) *
-tensor_float_add(
-	Tensor(float) * t1
-	, Tensor(float) * t2);
-
-
-/**
-**
-*/
-Tensor(int8_t) *
-tensor_int8_add(
-    Tensor(int8_t) * t1
-    , Tensor(int8_t) * t2);
-
-
-/**
-**
-*/
-Tensor(uint8_t) * 
-tensor_uint8_add(
-    Tensor(uint8_t) * t1
-    , Tensor(uint8_t) * t2);
 
 
 /**
@@ -153,31 +97,8 @@ tensor_uint8_add(
 			(T1, T2)
 
 
-/**
-** Addition operation of tensor of float with float constant
-*/
-Tensor(float) *
-tensor_float_const_add(
-	Tensor(float) * t
-	, float n);
 
 
-/**
-** Addition operation of tensor of int8_t with int8_t constant
-*/
-Tensor(int8_t) *
-tensor_int8_const_add(
-	Tensor(int8_t) * t
-	, int8_t n);
-
-
-/**
-** Addition operation of tensor of float with float constant
-*/
-Tensor(uint8_t) *
-tensor_uint8_const_add(
-	Tensor(uint8_t) * t
-	, uint8_t n);
 
 
 /**
@@ -205,31 +126,6 @@ tensor_uint8_const_add(
 			(T, n)
 
 
-/**
-**
-*/
-Tensor(float) * 
-tensor_float_multiply(
-    Tensor(float) * t1
-    , Tensor(float) * t2);
-
-
-/**
-**
-*/
-Tensor(int8_t) * 
-tensor_int8_multiply(
-    Tensor(int8_t) * t1
-    , Tensor(int8_t) * t2);
-
-
-/**
-**
-*/
-Tensor(uint8_t) * 
-tensor_uint8_multiply(
-    Tensor(uint8_t) * t1
-    , Tensor(uint8_t) * t2);
 
 
 /**
@@ -255,60 +151,51 @@ tensor_uint8_multiply(
             (T1, T2)
 
 
-/**
-**
-*/
-Tensor(float) *
-tensor_float_const_multiply(
-    Tensor(float) * t
-    , float n);
+
+
 
 
 /**
 **
 */
-Tensor(int8_t) *
-tensor_int8_const_multiply(
-    Tensor(int8_t) * t
-    , int8_t n);
-
-
-/**
-**
-*/
-Tensor(uint8_t) *
-tensor_uint8_const_multiply(
-    Tensor(uint8_t) * t
-    , uint8_t n);
-
-
-/**
-** TODO: treat type check for second input parameter
-*/
-#define tensor_char_const_multiply(t, n)                \
-    _Generic(                                           \
-        (t)                                             \
-        , Tensor(char)*: tensor_int8_const_multiply)    \
-            ((Tensor(int8_t) t), (int8_t) n)
-
-/**
-**
-*/
-#define tensor_const_multiply(T, n)                     \
-    _Generic(                                           \
-        (T)                                             \
-        , Tensor(float)*: tensor_float_const_multiply   \
-        , Tensor(int8_t)*: tensor_int8_const_multiply   \
-        , Tensor(uint8_t)*: tensor_uint8_const_multiply \
-        , Tensor(char)*: tensor_char_const_multiply)    \
+#define tensor_const_multiply(T, n)                      \
+    _Generic(                                            \
+        (T)                                              \
+        , Tensor(float)*   : tensor_float_const_multiply \
+        , Tensor(int8_t)*  : tensor_int8_const_multiply  \
+        , Tensor(uint8_t)* : tensor_uint8_const_multiply) \
             (T, n)
 
 
 
 
+/**
+**
+*/
+#define tensor_transpose(T)                             \
+    _Generic(                                           \
+        (T)                                             \
+        , Tensor(float)*: tensor_float_transpose        \
+        , Tensor(int8_t)*: tensor_int8_transpose        \
+        , Tensor(uint8_t)*: tensor_uint8_transpose      \
+        , Tensor(char)*: tensor_char_transpose          \
+        , Tensor(bool)*: tensor_bool_transpose)         \
+            (T)
 
 
 
+/**
+**
+*/
+#define tensor_inverse(T)                               \
+    _Generic(                                           \
+        (T)                                             \
+        , Tensor(float)*: tensor_float_inverse          \
+        , Tensor(int8_t)*: tensor_int8_inverse          \
+        , Tensor(uint8_t)*: tensor_uint8_inverse        \
+        , Tensor(char)*: tensor_char_inverse            \
+        , Tensor(bool)*: tensor_bool_inverse)           \
+            (T)
 
 
 #endif

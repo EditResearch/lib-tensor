@@ -16,24 +16,16 @@ tensor_generic.o\
 tensor_float.o\
 tensor_int8.o
 
+
 T_OBJFILES=\
 test.o\
 test_tensor_generic.o
 
 
-all: release gen_doc
-
+all: tensor
 
 gen_doc:
 	doxygen Doxyfile
-
-
-release: env $(OBJFILES)
-	ar rcs $(BUILD)/$(TARGET) $(OBJFILES)
-
-
-%.o:
-	$(CC) $(CFLAGS) -c $<
 
 
 test: env $(T_OBJFILES) $(OBJFILES) 
@@ -44,33 +36,39 @@ autotest: test
 	$(BUILD)/$(TEST)
 
 
--include $(DEP_LIST)
+tensor: env $(OBJFILES)
+	ar rcs $(BUILD)/$(TARGET) $(OBJFILES)
 
 
-.PHONY: configure
-configure:
+%.o :
+ifneq (,$(wildcard $(DEP_LIST)))
+	$(CC) $(CFLAGS) -c $<
+endif
+
+
+
+dep:
 	$(CC) -MM src/*.c test/*.c > $(DEP_LIST)
 
 
-.PHONY: env
+-include $(DEP_LIST)
+
+
 env:
 	mkdir -pv $(BUILD)
 
 
-.PHONY: install
 install:
 	mkdir -pv $(INCLUDE_PATH)/lib-tensor/
 	cp -rv src/include/*.h $(INCLUDE_PATH)/lib-tensor 
 	cp -v $(BUILD)/$(TARGET) $(LIB_PATH) 
 
 
-.PHONY: uninstall
 uninstall:
 	rm -rvf $(INCLUDE_PATH)/lib-tensor/
 	rm -fv $(LIB_PATH)/$(TARGET)
 
 
-.PHONY: clean
 clean:
 	rm -vfr $(BUILD)
 	rm -vf $(OBJFILES)

@@ -116,3 +116,79 @@ tensor_float_new(
 			                    , sizeof(float) * tensor_count_length(ndim, shape));
 }
 
+
+void 
+tensor_float_show(Tensor(float) * t)
+{
+    
+    (void)t;
+}
+
+
+
+Tensor(float) *
+tensor_float_add(
+	Tensor(float) * t1
+	, Tensor(float) * t2)
+{
+	(void)t1;
+	(void)t2;
+	/* TODO: code here */
+	return NULL;
+}
+
+
+Tensor(float) *
+tensor_float_const_add(
+	Tensor(float) * t
+	, float n)
+{
+	(void) t;
+	(void) n;
+	/* TODO: code here */
+	return NULL;
+}
+
+
+Tensor(float) * 
+tensor_float_multiply(
+    Tensor(float) * t1
+    , Tensor(float) * t2)
+{
+    (void)t1;
+    (void)t2;
+
+    /* TODO: code here */    
+    return NULL;
+}
+
+
+Tensor(float) *
+tensor_float_const_multiply(
+    Tensor(float) * t
+    , float n)
+{
+    (void) t;
+    (void) n;
+
+    /* TODO: code here */
+    return NULL;        
+}
+
+
+Tensor(float) *
+tensor_float_transpose(Tensor(float) * t)
+{
+    (void) t;
+    /* TODO: code here */
+    return NULL;
+}
+
+
+Tensor(float) *
+tensor_float_inverse(Tensor(float) * t)
+{
+    (void) t;
+    /* TODO: code here */
+    return NULL;
+}
